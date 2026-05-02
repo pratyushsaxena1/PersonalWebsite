@@ -1,0 +1,13 @@
+header {
+    text-align: center;
+    font-size: 4em;
+}
+
+a {
+    color: cyan;
+}
+
+p {
+    line-height: 4.2vh;
+    color: #02e35c;
+}

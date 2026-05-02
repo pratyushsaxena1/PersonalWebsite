@@ -3,12 +3,12 @@
 
 p {
     font-size: 1em;
-    margin-bottom: 4vh;
     font-family: 'Menlo', sans-serif;
+    line-height: 4.2vh;
 }
 
 #computerText {
-    color: green;
+    color: #02e35c;
 }
 
 input {
@@ -26,52 +26,88 @@ br {
     margin-top: 30vh;
 }
 
-#skipAnimationButton {
-    color: white;
-    background-color: black;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 0.2em;
-    padding-top: 0.4vh;
-    padding-bottom: 0.4vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    margin-top: 90vh;
-    position: absolute;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#introText {
-    color: white;
-    background-color: black;
+#popupOverlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
-    text-align: center;
-    font-size: 5em;
-    font-family: 'Montserrat', sans-serif;
+    background: rgba(0, 0, 0, 1);
     display: flex;
+    align-items: center;
     justify-content: center;
-    opacity: 0;
-    animation: fadeOut 12s;
+    z-index: 1000;
 }
 
-#mainIntroText {
-    margin-top: 20%;
-    animation: fadeIn 3s;
-    animation-iteration-count: 4;
+#popupOverlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+#popupBox1 {
+    background: rgb(30, 28, 28);
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 10vh;
+    border-radius: 1em;
+    text-align: center;
+    max-width: 45vw;
 }
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+#popupBox2 {
+    background: rgb(30, 28, 28);
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 10vh;
+    border-radius: 1em;
+    text-align: center;
+    max-width: 30vw;
+}
+
+#popupBox1 button {
+    margin-top: 1em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none;
+    background-color: rgb(60, 59, 59);
+    color: white;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-family: 'Menlo', sans-serif;
+}
+
+#popupBox1 button:hover {
+    background-color: rgb(72, 71, 71);
+}
+
+#popupBox2 button {
+    margin-top: 1em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none;
+    background-color: rgb(60, 59, 59);
+    color: white;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-family: 'Menlo', sans-serif;
+}
+
+#popupBox2 button:hover {
+    background-color: rgb(72, 71, 71);
 }

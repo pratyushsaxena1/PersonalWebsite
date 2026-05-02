@@ -3,27 +3,39 @@
 <head>
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Pratyush's Cool Website</title>
+    <title>Pratyush Saxena | Cornell</title>
     <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/general_style.css')}}">
     <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/index_style.css')}}">
 </head>
 <body>
-    <div id = "introText">
-        <span id = "mainIntroText">Hello.</span>
-        <button id = "skipAnimationButton" onclick = "skipAnimation()">Skip Animation</button>
+    <div id="popupOverlay2">
+        <div id="popupBox2">
+            <p style = "font-size: 1.5em; margin-top: 0.5vh; margin-bottom: 3vh; color: #02e35c;">ACCESS GRANTED</p>
+            <p style = "text-align: left;">user: amazingvisitor<br>host: pratyushsaxenawebsite<br>connection time: <span id = "connectionTime"></span></p>
+            <button onclick="closePopup2()">PROCEED</button>
+        </div>
     </div>
-    <p id = "inputText">Last login: Wed Feb 7 16:47:49 on ttys003</p>
-    <p id = "inputText">(base) AmazingVisitorToMyWebsite@MacBook-Pro ~ % whoami</p>
-    <p id = "computerText">my name is pratyush saxena, and this is my personal website. i hope you enjoy looking around here as much as i enjoyed coding it.</p>
-    <p id = "inputText">(base) AmazingVisitorToMyWebsite@MacBook-Pro ~ % ls</p>
-    <p id = "computerText">boy scouts (b)</p>
-    <p id = "computerText">extracurriculars (e)</p>
+    <div id="popupOverlay1">
+        <div id="popupBox1">
+            <p>welcome to my website! as you continue, you’ll enter a computer terminal-style environment. i chose this design because it reflects my interest in computer science (and because it looks cool). feel free to explore the first few "commands" to learn more about me, or skip to the bottom to see my work.</p>
+            <button onclick="closePopup1()">got it!</button>
+        </div>  
+    </div>
+    <p id = "inputText">Last login: Wed Mar 7 16:47:49 on ttys003</p>
+    <p id = "inputText">amazingvisitor@pratyushsaxenawebsite ~ % cat README.md</p>
+    <p id = "computerText">welcome to my personal portfolio. here you’ll find a selection of my interests, projects, and experiences. i hope you enjoy exploring!</p>
+    <p id = "inputText">amazingvisitor@pratyushsaxenawebsite ~ % whoami</p>
+    <p id = "computerText">pratyush saxena</p>
+    <p id = "inputText">amazingvisitor@pratyushsaxenawebsite ~ % cat bio.txt</p>
+    <p id = "computerText">hi! i’m a student at cornell university studying computer science and artificial intelligence. besides coding, my interests include late-night drives, music (any genre), guitar, my dog waffle, and basketball.</p>
+    <p id = "inputText">amazingvisitor@pratyushsaxenawebsite ~ % ls</p>
+    <p id = "computerText">experience (e)</p>
     <p id = "computerText">github (g)</p>
+    <p id = "computerText">linkedin (l)</p>
+    <p id = "computerText">projects (p)</p>
     <p id = "computerText">resume (r)</p>
-    <p id = "computerText">sysadmin (s)</p>
-    <p id = "computerText">tae kwon do (t)</p>
-    <p id = "computerText">w3-Study (w)</p>
-    <p id = "inputText" id = "inputContainer">(base) AmazingVisitorToMyWebsite@MacBook-Pro ~ % <input type = "text" id = "userInput" placeholder = "Type a letter above and press enter" onkeydown = "handleKeyDown(event)"></input></p>
+    <p id = "computerText">spotify (s)</p>
+    <p id = "inputText" id = "inputContainer">amazingvisitor@pratyushsaxenawebsite ~ % <input type = "text" id = "userInput" placeholder = "type a letter and press enter" onkeydown = "handleKeyDown(event)" onblur="this.focus()" autofocus></input></p>
     <script src = "{{url_for('static', filename = 'js/index_script.js')}}"></script>
 </body>
 </html>

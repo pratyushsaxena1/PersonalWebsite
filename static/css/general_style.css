@@ -3,7 +3,7 @@
 body {
     color: white;
     background-color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Menlo', sans-serif;
 }
 
 .backButton {
@@ -18,5 +18,5 @@ body {
     padding-right: 1vw;
     margin-top: 1vh;
     margin-left: 1vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Menlo', sans-serif;
 }

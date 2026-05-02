@@ -6,3 +6,8 @@ header {
 a {
     color: cyan;
 }
+
+p {
+    line-height: 4.2vh;
+    color: #00FF66;
+}
