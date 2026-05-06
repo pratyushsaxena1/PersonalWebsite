@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Pratyush Saxena</title>
+    <meta name="description" content="Work history and internships - {{ site.name }}.">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="theme-color" content="#02e35c">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general_style.css') }}">
+</head>
+<body>
+    <div class="window">
+        <div class="titlebar">
+            <div class="traffic-lights">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="titlebar-title">amazingvisitor - experience.txt</div>
+        </div>
+
+        <main class="terminal">
+            <a class="backLink" href="{{ url_for('terminal_index') }}">back to terminal</a>
+
+            <p class="prompt">
+                <span class="user">amazingvisitor</span><span class="at">@</span><span class="host">pratyushsaxenawebsite</span> <span class="path">~</span> <span class="sigil">%</span> <span class="cmd">cat experience.txt</span>
+            </p>
+
+            <h1 class="page-title"># experience</h1>
+            <p class="page-tagline">internships and roles, in reverse chronological order.</p>
+
+            {% for job in experience %}
+            <article class="entry">
+                <header class="entry-header">
+                    <h2>{{ job.company }} <span style="color: var(--text-dim); font-weight: normal;">- {{ job.role }}</span></h2>
+                    <span class="meta">{{ job.dates }}</span>
+                </header>
+                <p>{{ job.description }}</p>
+                {% if job.tags %}
+                <ul class="tags">
+                    {% for tag in job.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+            </article>
+            {% endfor %}
+
+            <footer>
+                <span><a href="mailto:{{ site.email }}">{{ site.email }}</a> · <a href="{{ url_for('classic') }}">classic website view</a></span>
+                <span class="footer-links">
+                    <a href="{{ url_for('terminal_projects') }}">projects</a>
+                    <a href="{{ url_for('terminal_resume') }}">resume</a>
+                </span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>

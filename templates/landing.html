@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratyush Saxena - Cornell</title>
+    <meta name="description" content="{{ site.hook }}">
+    <meta name="author" content="{{ site.name }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-landing.svg') }}">
+    <meta property="og:title" content="Pratyush Saxena">
+    <meta property="og:description" content="{{ site.hook }}">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#02e35c">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}">
+</head>
+<body>
+    <header class="landing-header">
+        <h1 class="landing-name-big">Pratyush Saxena</h1>
+        <p class="landing-sub">cs + ai student at cornell. pick a view to look around.</p>
+    </header>
+
+    <main class="chooser">
+        <a class="choice classic" href="{{ url_for('classic') }}">
+            <div class="choice-preview" aria-hidden="true">
+                <div class="classic-mini">
+                    <div class="classic-mini-side">
+                        <p class="classic-mini-name">Pratyush Saxena</p>
+                        <p class="classic-mini-role">CS + AI · Cornell</p>
+                        <div class="classic-mini-nav">
+                            <span class="active">About</span>
+                            <span>Experience</span>
+                            <span>Projects</span>
+                        </div>
+                    </div>
+                    <div class="classic-mini-main">
+                        <p class="classic-mini-label">EXPERIENCE</p>
+                        <div class="classic-mini-bar"></div>
+                        <div class="classic-mini-bar short"></div>
+                        <div class="classic-mini-bar"></div>
+                        <div class="classic-mini-bar shorter"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="choice-body">
+                <p class="choice-label">// professional</p>
+                <h2 class="choice-title">classic website</h2>
+                <p class="choice-desc">a normal webpage with my experiences, projects, and contact information. easy to browse through.</p>
+                <span class="choice-cta">enter classic website <span class="arrow">→</span></span>
+            </div>
+        </a>
+        <a class="choice terminal" href="{{ url_for('terminal_index') }}">
+            <div class="choice-preview" aria-hidden="true">
+                <div class="term-mini-bar">
+                    <span class="td td-r"></span>
+                    <span class="td td-y"></span>
+                    <span class="td td-g"></span>
+                </div>
+                <div class="term-mini-body">
+                    <div class="preview-line"><span class="dim-preview">Last login: Wed May 6 14:49 on ttys003</span></div>
+                    <div class="preview-line"><span class="dim-preview">~ %</span> cat README.md</div>
+                    <div class="preview-line preview-output">Welcome to my terminal portfolio.</div>
+                    <div class="preview-line preview-output">I'm Pratyush, a CS + AI student at Cornell.</div>
+                    <div class="preview-line"><span class="dim-preview">~ %</span> ls</div>
+                    <div class="preview-line preview-ls"><span class="file-preview">README.md</span>  <span class="dir-preview">about/</span>  <span class="dir-preview">experience/</span>  <span class="dir-preview">links/</span>  <span class="dir-preview">projects/</span>  <span class="file-preview">resume.pdf</span></div>
+                    <div class="preview-line"><span class="dim-preview">~ %</span> <span class="preview-cursor"></span></div>
+                </div>
+            </div>
+            <div class="choice-body">
+                <p class="choice-label">// fun</p>
+                <h2 class="choice-title">terminal</h2>
+                <p class="choice-desc">an interactive shell. previous experience with a terminal is useful, but not necessary.</p>
+                <span class="choice-cta">enter terminal <span class="arrow">→</span></span>
+            </div>
+        </a>
+    </main>
+
+    <footer class="landing-footer">
+        <p>or jump straight to
+            <a href="mailto:{{ site.email }}">email</a> ·
+            <a href="{{ site.github }}" target="_blank" rel="noopener">github</a> ·
+            <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a> ·
+            <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
+        </p>
+    </footer>
+</body>
+</html>

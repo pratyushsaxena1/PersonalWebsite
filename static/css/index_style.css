@@ -1,113 +1,112 @@
-@import url('https://fonts.cdnfonts.com/css/menlo');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+/* ============================================================
+   homepage-only styles
+   ============================================================ */
 
-p {
-    font-size: 1em;
-    font-family: 'Menlo', sans-serif;
-    line-height: 4.2vh;
+/* ASCII banner */
+.ascii-banner {
+    color: var(--green);
+    font-size: 0.7em;
+    line-height: 1.05;
+    margin: 0 0 1.4em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-shadow: 0 0 12px rgba(2, 227, 92, 0.25);
+    font-family: var(--font-mono);
+    white-space: pre;
 }
 
-#computerText {
-    color: #02e35c;
+@media (max-width: 720px) {
+    .ascii-banner { font-size: 0.55em; }
 }
 
-input {
-    color: white;
-    background-color: black;
-    font-family: 'Menlo', sans-serif;
+/* uniform vertical rhythm: every prompt sits 0.6em below the previous block,
+   internal lines within a block hug each other tightly. */
+.input-line {
+    margin: 0.6em 0 0.05em;
+}
+
+.input-line:first-child {
+    margin-top: 0.6em;
+}
+
+.computer-text {
+    margin: 0 0 0;
+}
+
+.menu-key { color: var(--accent); }
+
+/* `ls` entries — colored by type, mac `ls --color` style.
+   dirs also get a trailing `/` from JS (ls -F flavor) for extra clarity. */
+.ls-dir  { color: var(--path); }
+.ls-link { color: var(--accent); }
+.ls-file { color: var(--text); }
+
+
+/* multi-column ls grid - mimics real `ls` column behavior */
+.ls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+    gap: 0.05em 1.2em;
+    margin: 0;
+}
+
+/* a small "ls" output that hugs the prompt above it */
+.computer-text + .computer-text { margin-top: 0; }
+
+.tip {
+    color: var(--text-dim);
+    font-size: 0.85em;
+    margin: 1.2em 0 0;
+}
+
+.tip code,
+.tip kbd {
+    color: var(--green);
+    background: var(--green-soft);
+    padding: 0.05em 0.4em;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.95em;
+    border: 1px solid var(--tag-border);
+}
+
+/* ---------- input row ---------- */
+/* sits at the same 0.6em rhythm as a new prompt echo, so the gap before it
+   matches the gap between past command blocks. */
+.input-row {
+    margin-top: 0.6em;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.input-row .prefix { white-space: pre; }
+
+#userInput {
+    color: var(--text);
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
     border: none;
     outline: none;
-    width: 20vw;
+    width: 22em;
+    max-width: 60vw;
+    caret-color: var(--green);
+    padding: 0;
+    vertical-align: baseline;
 }
 
-br {
-    display: block;
-    content: "";
-    margin-top: 30vh;
+/* small `help` pill embedded in the titlebar text */
+.titlebar-title code {
+    color: var(--green);
+    background: var(--green-soft);
+    padding: 0.02em 0.35em;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    border: 1px solid var(--tag-border);
 }
 
-#popupOverlay1 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-#popupOverlay2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-#popupBox1 {
-    background: rgb(30, 28, 28);
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding-left: 3em;
-    padding-right: 3em;
-    margin-bottom: 10vh;
-    border-radius: 1em;
-    text-align: center;
-    max-width: 45vw;
-}
-
-#popupBox2 {
-    background: rgb(30, 28, 28);
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding-left: 3em;
-    padding-right: 3em;
-    margin-bottom: 10vh;
-    border-radius: 1em;
-    text-align: center;
-    max-width: 30vw;
-}
-
-#popupBox1 button {
-    margin-top: 1em;
-    padding-top: 0.6em;
-    padding-bottom: 0.6em;
-    padding-left: 1em;
-    padding-right: 1em;
-    border: none;
-    background-color: rgb(60, 59, 59);
-    color: white;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-family: 'Menlo', sans-serif;
-}
-
-#popupBox1 button:hover {
-    background-color: rgb(72, 71, 71);
-}
-
-#popupBox2 button {
-    margin-top: 1em;
-    padding-top: 0.6em;
-    padding-bottom: 0.6em;
-    padding-left: 1em;
-    padding-right: 1em;
-    border: none;
-    background-color: rgb(60, 59, 59);
-    color: white;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-family: 'Menlo', sans-serif;
-}
-
-#popupBox2 button:hover {
-    background-color: rgb(72, 71, 71);
+@media (max-width: 720px) {
+    #userInput { width: 12em; }
 }

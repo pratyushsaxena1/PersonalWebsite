@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratyush Saxena - Terminal</title>
+    <meta name="description" content="{{ site.hook }}">
+    <meta name="author" content="{{ site.name }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta property="og:title" content="Pratyush Saxena">
+    <meta property="og:description" content="{{ site.hook }}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#02e35c">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_style.css') }}">
+    <script>
+        window.SITE = {
+            hook: {{ site.hook | tojson }},
+            email: {{ site.email | tojson }},
+            experience: {{ experience | tojson }},
+            projects:   {{ projects | tojson }},
+        };
+    </script>
+</head>
+<body>
+    <div class="window">
+        <div class="titlebar">
+            <div class="traffic-lights">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="titlebar-title">amazingvisitor - bash - type <code>help</code> for the command list</div>
+        </div>
+
+        <main class="terminal" id="terminal">
+            <pre class="ascii-banner" aria-hidden="true">  ____            _                  _
+ |  _ \ _ __ __ _| |_ _   _ _   _ ___| |__
+ | |_) | '__/ _` | __| | | | | | / __| '_ \
+ |  __/| | | (_| | |_| |_| | |_| \__ \ | | |
+ |_|   |_|  \__,_|\__|\__, |\__,_|___/_| |_|
+                      |___/
+</pre>
+
+            <div id="intro"></div>
+
+            <div id="terminalOutput"></div>
+
+            <p class="input-row" id="inputRow"><span class="prefix"><span class="user">amazingvisitor</span><span class="at">@</span><span class="host">pratyushsaxenawebsite</span> <span class="path" id="promptPath">~</span> <span class="sigil">%</span>&nbsp;</span><input type="text" id="userInput" autocomplete="off" spellcheck="false" autofocus onkeydown="handleKeyDown(event)"></p>
+
+            <footer>
+                <span>© <span id="year"></span> Pratyush Saxena · <a href="{{ url_for('classic') }}">classic website view</a></span>
+                <span class="footer-links">
+                    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+                    <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
+                    <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a>
+                </span>
+            </footer>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index_script.js') }}"></script>
+</body>
+</html>

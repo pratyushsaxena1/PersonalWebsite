@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratyush Saxena - Classic</title>
+    <meta name="description" content="{{ site.hook }}">
+    <meta name="author" content="{{ site.name }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-classic.svg') }}">
+    <meta property="og:title" content="Pratyush Saxena">
+    <meta property="og:description" content="{{ site.hook }}">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#faf8f3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/classic_style.css') }}">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h1 class="brand-name">Pratyush Saxena</h1>
+            <p class="brand-role">CS + AI student at Cornell University</p>
+
+            <nav class="side-nav" aria-label="Sections">
+                <a href="#about" data-section="about">About</a>
+                <a href="#work" data-section="work">Experience</a>
+                <a href="#projects" data-section="projects">Projects</a>
+            </nav>
+
+            <div class="side-links">
+                <a href="mailto:{{ site.email }}">Email <span class="arrow">↗</span></a>
+                <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">Resume <span class="arrow">↗</span></a>
+                <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+                <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+                <a href="{{ site.spotify }}" target="_blank" rel="noopener">Spotify <span class="arrow">↗</span></a>
+            </div>
+
+            <div class="side-footer">
+                <a href="{{ url_for('terminal_index') }}">$ terminal view →</a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section id="about">
+                <header class="section-head">
+                    <h2 class="section-title">About</h2>
+                </header>
+                <p class="about-prose">
+                    I'm a Cornell student pursuing a bachelor's degree in Computer Science with a minor in Artificial Intelligence. I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience in software engineering, AI research, and fintech. I'll be in San Jose this summer interning at Cisco (Splunk). I'm always excited to learn new things and meet people doing interesting work, so feel free to contact me and we can connect!
+                </p>
+            </section>
+
+            <section id="work">
+                <header class="section-head">
+                    <h2 class="section-title">Experience</h2>
+                    <span class="section-meta">{{ experience|length }} roles</span>
+                </header>
+                {% for job in experience %}
+                <article class="role">
+                    <div class="role-when">{{ job.dates }}</div>
+                    <div class="role-body">
+                        <h3 class="role-title">
+                            <span class="role-co">{{ job.company }}</span><span class="role-arrow">→</span><span class="role-position">{{ job.role }}</span>
+                        </h3>
+                        {% if job.highlights %}
+                        <ul class="role-points">
+                            {% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="role-desc">{{ job.description }}</p>
+                        {% endif %}
+                        {% if job.tags %}
+                        <ul class="tags">
+                            {% for tag in job.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+
+            <section id="projects">
+                <header class="section-head">
+                    <h2 class="section-title">Projects</h2>
+                    <span class="section-meta">{{ projects|length }} selected</span>
+                </header>
+                {% for proj in projects %}
+                <article class="project">
+                    <div class="project-num">{{ "%02d"|format(loop.index) }}</div>
+                    <div class="project-body">
+                        <h3 class="project-title">
+                            <span class="project-name">{{ proj.name }}</span><span class="role-arrow">→</span><span class="project-sub">{{ proj.subtitle }}</span>
+                        </h3>
+                        <p class="project-desc">{{ proj.description }}</p>
+                        {% if proj.tags %}
+                        <ul class="tags">
+                            {% for tag in proj.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="project-links">
+                        {% if proj.links %}
+                            {% for link in proj.links %}<a href="{{ link.href }}" target="_blank" rel="noopener">{{ link.label }} ↗</a>{% endfor %}
+                        {% else %}
+                            <span class="empty">-</span>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            const navLinks = Array.from(document.querySelectorAll('.side-nav a[data-section]'));
+            const sections = navLinks
+                .map(a => document.getElementById(a.dataset.section))
+                .filter(Boolean);
+            if (!sections.length) return;
+
+            function setActive(id) {
+                navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.section === id));
+            }
+
+            function update() {
+                const scrollY = window.scrollY;
+                const viewportH = window.innerHeight;
+                const docH = document.documentElement.scrollHeight;
+
+                // If we're near the bottom of the page, the last section is active.
+                if (scrollY + viewportH >= docH - 24) {
+                    setActive(sections[sections.length - 1].id);
+                    return;
+                }
+
+                // Otherwise: pick the section whose top is closest to (but not past)
+                // a line ~30% down from the top of the viewport.
+                const line = scrollY + viewportH * 0.3;
+                let active = sections[0].id;
+                for (const s of sections) {
+                    if (s.offsetTop <= line) active = s.id;
+                    else break;
+                }
+                setActive(active);
+            }
+
+            let pending = false;
+            function schedule() {
+                if (pending) return;
+                pending = true;
+                requestAnimationFrame(() => { pending = false; update(); });
+            }
+
+            window.addEventListener('scroll', schedule, { passive: true });
+            window.addEventListener('resize', schedule);
+            update();
+        })();
+    </script>
+</body>
+</html>

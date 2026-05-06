@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Pratyush Saxena</title>
+    <meta name="description" content="Selected projects - {{ site.name }}.">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta name="theme-color" content="#02e35c">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general_style.css') }}">
+</head>
+<body>
+    <div class="window">
+        <div class="titlebar">
+            <div class="traffic-lights">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="titlebar-title">amazingvisitor - projects/</div>
+        </div>
+
+        <main class="terminal">
+            <a class="backLink" href="{{ url_for('terminal_index') }}">back to terminal</a>
+
+            <p class="prompt">
+                <span class="user">amazingvisitor</span><span class="at">@</span><span class="host">pratyushsaxenawebsite</span> <span class="path">~</span> <span class="sigil">%</span> <span class="cmd">ls projects/</span>
+            </p>
+
+            <h1 class="page-title"># projects</h1>
+            <p class="page-tagline">a small selection - full code and more on <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>.</p>
+
+            {% for proj in projects %}
+            <article class="entry">
+                <header class="entry-header">
+                    <h2>{{ proj.name }} <span style="color: var(--text-dim); font-weight: normal;">- {{ proj.subtitle }}</span></h2>
+                </header>
+                <p>{{ proj.description }}</p>
+                {% if proj.tags %}
+                <ul class="tags">
+                    {% for tag in proj.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+                {% if proj.links %}
+                <p class="entry-links">
+                    {% for link in proj.links %}<a href="{{ link.href }}" target="_blank" rel="noopener">{{ link.label }} ↗</a>{% endfor %}
+                </p>
+                {% endif %}
+            </article>
+            {% endfor %}
+
+            <footer>
+                <span><a href="mailto:{{ site.email }}">{{ site.email }}</a> · <a href="{{ url_for('classic') }}">classic website view</a></span>
+                <span class="footer-links">
+                    <a href="{{ url_for('terminal_experience') }}">experience</a>
+                    <a href="{{ url_for('terminal_resume') }}">resume</a>
+                    <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
+                </span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
