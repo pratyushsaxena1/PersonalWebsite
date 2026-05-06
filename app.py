@@ -184,18 +184,10 @@ def classic():
     )
 
 
-# ----- pretty resume url (sets the saved filename) -----
+# ----- pretty resume url -----
 @app.route('/resume.pdf')
 def resume_file():
-    response = send_from_directory(
-        app.static_folder,
-        'resume.pdf',
-        mimetype='application/pdf',
-    )
-    response.headers['Content-Disposition'] = (
-        f'inline; filename="{RESUME_FILENAME}"'
-    )
-    return response
+    return redirect(url_for('static', filename='resume.pdf'))
 
 
 # ----- legacy redirects (keep old shared links working) -----
