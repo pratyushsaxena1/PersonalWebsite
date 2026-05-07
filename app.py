@@ -191,6 +191,11 @@ def resume_file():
 
 
 # ----- legacy redirects (keep old shared links working) -----
+@app.route('/homepage')
+def _legacy_homepage():
+    return redirect(url_for('landing'), code=301)
+
+
 @app.route('/experience')
 def _legacy_experience():
     return redirect(url_for('terminal_experience'), code=301)
