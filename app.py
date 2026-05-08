@@ -198,6 +198,13 @@ def resume_file():
     return redirect(url_for('static', filename='resume.pdf'))
 
 
+# AdSense ownership verification for tools.pratyushsaxena.com.
+@app.route('/ads.txt')
+def ads_txt():
+    return ('google.com, pub-1429285815293223, DIRECT, f08c47fec0942fa0\n',
+            200, {'Content-Type': 'text/plain'})
+
+
 # ----- legacy redirects (keep old shared links working) -----
 @app.route('/homepage')
 def _legacy_homepage():
