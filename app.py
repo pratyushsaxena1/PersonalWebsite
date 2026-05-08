@@ -226,7 +226,7 @@ def admin_report():
     if not expected or request.args.get('token') != expected:
         abort(404)
     days = int(request.args.get('days', 7))
-    days = max(1, min(days, 90))
+    days = max(1, min(days, 3650))
     report = analytics.build_report(days=days)
     if request.args.get('format') == 'json':
         return jsonify(report)
