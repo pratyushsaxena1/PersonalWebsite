@@ -282,6 +282,8 @@ def send_email(report: dict) -> tuple[bool, str]:
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "User-Agent": "pratyushsaxena.com-analytics/1.0",
+            "Accept": "application/json",
         },
         method="POST",
     )
