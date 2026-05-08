@@ -8,3 +8,7 @@ ENV/
 .DS_Store
 Thumbs.db
 *.log
+.claude
+
+# Nested project — tools-hub has its own git repo and Vercel deployment
+tools-hub/
