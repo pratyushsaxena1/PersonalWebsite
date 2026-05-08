@@ -317,6 +317,69 @@ body {
 .classic-mini-bar.short   { background: linear-gradient(90deg, #3d3a35 0 65%, transparent 65%); }
 .classic-mini-bar.shorter { background: linear-gradient(90deg, #3d3a35 0 45%, transparent 45%); }
 
+/* ---------- tools strip ---------- */
+.tools-strip {
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+    width: 100%;
+    max-width: 1040px;
+    margin-top: 1.6em;
+    padding: 0.95em 1.4em;
+    background: var(--window-bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    animation: fadeUp 0.7s 0.25s both ease-out;
+}
+
+.tools-strip:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 175, 90, 0.5);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tools-strip-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffaf5a;
+    flex-shrink: 0;
+}
+
+.tools-strip-text {
+    flex: 1;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+.tools-strip-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.tools-strip:hover .tools-strip-cta {
+    color: #ffaf5a;
+}
+
+.tools-strip .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.tools-strip:hover .arrow {
+    transform: translateX(4px);
+}
+
 /* ---------- footer ---------- */
 .landing-footer {
     text-align: center;
@@ -373,4 +436,11 @@ body {
 
     .choice-preview { height: 140px; }
     .choice-body    { padding: 1.2em; }
+
+    .tools-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+        padding: 1em 1.2em;
+    }
 }
