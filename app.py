@@ -1,7 +1,15 @@
 import os
-from flask import Flask, render_template, redirect, url_for, send_from_directory
+from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort, jsonify
+
+import analytics
 
 app = Flask(__name__)
+analytics.init_db()
+
+
+@app.before_request
+def _log_hit():
+    analytics.record(request)
 
 RESUME_FILENAME = "Pratyush Saxena Resume.pdf"
 
@@ -209,6 +217,23 @@ def _legacy_projects():
 @app.route('/resume')
 def _legacy_resume():
     return redirect(url_for('terminal_resume'), code=301)
+
+
+# ----- analytics admin -----
+@app.route('/admin/report')
+def admin_report():
+    expected = os.environ.get('ADMIN_TOKEN')
+    if not expected or request.args.get('token') != expected:
+        abort(404)
+    days = int(request.args.get('days', 7))
+    days = max(1, min(days, 90))
+    report = analytics.build_report(days=days)
+    if request.args.get('format') == 'json':
+        return jsonify(report)
+    if request.args.get('email') == '1':
+        ok, msg = analytics.send_email(report)
+        return jsonify({'ok': ok, 'msg': msg, 'report': report})
+    return analytics.render_html(report)
 
 
 if __name__ == '__main__':

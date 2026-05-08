@@ -10,5 +10,9 @@ Thumbs.db
 *.log
 .claude
 
-# Nested project — tools-hub has its own git repo and Vercel deployment
+# Analytics SQLite (runtime data, never commit)
+analytics.db
+*.db
+
+# Nested project (tools-hub has its own git repo and Vercel deployment)
 tools-hub/
