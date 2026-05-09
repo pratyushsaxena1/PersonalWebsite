@@ -133,19 +133,16 @@ def record_tool_hit(request, slug: str | None = None) -> None:
 
 def tool_visit_stats() -> dict:
     """Total visits + unique visitors across the whole brand (main site +
-    tools subdomain). Excludes internal /api/ paths so the tracker doesn't
-    count itself."""
+    tools subdomain). Counts everything, including API tracker calls, so
+    the headline number reflects total touchpoints, not just user-facing
+    pageviews."""
     try:
         with _connect() as conn:
-            tool_visits = conn.execute(
-                "SELECT COUNT(*) FROM tool_hits"
-            ).fetchone()[0] or 0
-            main_visits = conn.execute(
-                "SELECT COUNT(*) FROM hits WHERE path NOT LIKE '/api/%'"
-            ).fetchone()[0] or 0
+            tool_visits = conn.execute("SELECT COUNT(*) FROM tool_hits").fetchone()[0] or 0
+            main_visits = conn.execute("SELECT COUNT(*) FROM hits").fetchone()[0] or 0
             unique_visitors = conn.execute(
                 "SELECT COUNT(DISTINCT ip_hash) FROM ("
-                "  SELECT ip_hash FROM hits WHERE path NOT LIKE '/api/%' "
+                "  SELECT ip_hash FROM hits "
                 "  UNION SELECT ip_hash FROM tool_hits"
                 ")"
             ).fetchone()[0] or 0
