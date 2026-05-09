@@ -62,6 +62,23 @@ def init_db() -> None:
         )
         conn.execute("CREATE INDEX IF NOT EXISTS idx_hits_ts ON hits(ts)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_hits_ip ON hits(ip_hash)")
+        # Separate table for the tools-hub subdomain (tools.pratyushsaxena.com).
+        # Keeps the main portfolio analytics clean and lets us count unique
+        # visitors specifically for the tools site.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS tool_hits (
+                id        INTEGER PRIMARY KEY AUTOINCREMENT,
+                ts        INTEGER NOT NULL,
+                slug      TEXT,
+                referrer  TEXT,
+                ua        TEXT,
+                ip_hash   TEXT NOT NULL
+            )
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_tool_hits_ts ON tool_hits(ts)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_tool_hits_ip ON tool_hits(ip_hash)")
 
 
 def record(request) -> None:
@@ -89,6 +106,42 @@ def record(request) -> None:
     except Exception:
         # Analytics must never break the request.
         pass
+
+
+def record_tool_hit(request, slug: str | None = None) -> None:
+    """Record a hit on the tools-hub subdomain. Called from the public CORS endpoint."""
+    try:
+        ua = (request.headers.get("User-Agent") or "")[:500]
+        if BOT_RE.search(ua):
+            return
+        fwd = request.headers.get("X-Forwarded-For", "")
+        ip = fwd.split(",")[0].strip() if fwd else (request.remote_addr or "")
+        with _connect() as conn:
+            conn.execute(
+                "INSERT INTO tool_hits(ts, slug, referrer, ua, ip_hash) VALUES(?,?,?,?,?)",
+                (
+                    int(time.time()),
+                    (slug or "")[:200] or None,
+                    (request.referrer or "")[:500],
+                    ua,
+                    _hash_ip(ip),
+                ),
+            )
+    except Exception:
+        pass
+
+
+def tool_visit_stats() -> dict:
+    """Return total visits + unique visitors for the tools-hub."""
+    try:
+        with _connect() as conn:
+            total = conn.execute("SELECT COUNT(*) FROM tool_hits").fetchone()[0]
+            unique = conn.execute(
+                "SELECT COUNT(DISTINCT ip_hash) FROM tool_hits"
+            ).fetchone()[0]
+            return {"visits": int(total or 0), "visitors": int(unique or 0)}
+    except Exception:
+        return {"visits": 0, "visitors": 0}
 
 
 # ---------- parsing helpers ----------

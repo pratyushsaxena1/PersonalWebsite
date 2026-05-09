@@ -226,6 +226,44 @@ def _legacy_resume():
     return redirect(url_for('terminal_resume'), code=301)
 
 
+# ----- public analytics for tools.pratyushsaxena.com -----
+TOOLS_ORIGIN = "https://tools.pratyushsaxena.com"
+
+
+def _tools_cors(resp):
+    origin = request.headers.get("Origin", "")
+    # Allow the production tools subdomain plus localhost for dev.
+    if origin == TOOLS_ORIGIN or origin.startswith("http://localhost:"):
+        resp.headers["Access-Control-Allow-Origin"] = origin
+        resp.headers["Vary"] = "Origin"
+        resp.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        resp.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        resp.headers["Access-Control-Max-Age"] = "86400"
+    return resp
+
+
+@app.route('/api/tool-visits/track', methods=['POST', 'OPTIONS'])
+def tool_visits_track():
+    if request.method == 'OPTIONS':
+        return _tools_cors(app.make_response(('', 204)))
+    slug = None
+    try:
+        data = request.get_json(silent=True) or {}
+        slug = data.get('slug') if isinstance(data, dict) else None
+    except Exception:
+        slug = None
+    analytics.record_tool_hit(request, slug)
+    stats = analytics.tool_visit_stats()
+    return _tools_cors(jsonify(stats))
+
+
+@app.route('/api/tool-visits/count', methods=['GET', 'OPTIONS'])
+def tool_visits_count():
+    if request.method == 'OPTIONS':
+        return _tools_cors(app.make_response(('', 204)))
+    return _tools_cors(jsonify(analytics.tool_visit_stats()))
+
+
 # ----- analytics admin -----
 @app.route('/admin/report')
 def admin_report():
