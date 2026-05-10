@@ -14,5 +14,6 @@ Thumbs.db
 analytics.db
 *.db
 
-# Nested project (tools-hub has its own git repo and Vercel deployment)
-tools-hub/
+# Nested projects (each has its own git repo and Vercel deployment)
+freeTools/
+paidTools/

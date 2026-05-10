@@ -9,7 +9,7 @@ Notes for future me. Two separate projects, two separate hosts, two separate rep
 | Flask portfolio | pratyushsaxena.com | GoDaddy (cPanel + Setup Python App) | [PersonalWebsite](https://github.com/pratyushsaxena1/PersonalWebsite) |
 | Next.js tools hub | tools.pratyushsaxena.com | Vercel | [tools](https://github.com/pratyushsaxena1/tools) |
 
-The tools-hub folder inside this repo is gitignored. It has its own repo and its own deploy.
+The freeTools folder inside this repo is gitignored. It has its own repo and its own deploy.
 
 ## Updating the Flask site (pratyushsaxena.com)
 
@@ -42,7 +42,7 @@ The tools-hub folder inside this repo is gitignored. It has its own repo and its
 Just push to GitHub. Vercel auto-deploys on every push to `main`.
 
 ```
-cd tools-hub
+cd freeTools
 git add .
 git commit -m "what changed"
 git push origin main
@@ -89,7 +89,7 @@ I use cron-job.org to hit the email URL on a schedule. Free.
 
 ### Tools hub (Vercel Analytics)
 
-Already wired up via `@vercel/analytics`. Just open vercel.com → tools-hub project → Analytics tab. Free tier covers pageviews, top pages, referrers, devices, countries.
+Already wired up via `@vercel/analytics`. Just open vercel.com → freeTools project → Analytics tab. Free tier covers pageviews, top pages, referrers, devices, countries.
 
 ## Environment variables
 
@@ -106,7 +106,7 @@ Real values live on the servers, not in this repo.
 | `ANALYTICS_DB_PATH` | Optional. Where the SQLite file lives. Default is `analytics.db` next to `app.py` |
 | `ANALYTICS_IP_SALT` | Optional. Salt for the IP hash. Rotate occasionally if paranoid |
 
-### Vercel (tools-hub, set in project → Settings → Environment Variables)
+### Vercel (freeTools, set in project → Settings → Environment Variables)
 
 | Variable | What it does |
 |---|---|
@@ -136,7 +136,7 @@ Open localhost:5001. The analytics SQLite file gets created in the project folde
 ### Tools hub
 
 ```
-cd tools-hub
+cd freeTools
 npm install
 npm run dev
 ```
@@ -158,7 +158,7 @@ Open localhost:3000. To test the request-tool form locally, copy `.env.example` 
 ├── static/
 │   ├── css/, js/
 │   └── resume.pdf
-└── tools-hub/              (separate repo, own README)
+└── freeTools/              (separate repo, own README)
 ```
 
 ## Useful one-liners
@@ -180,7 +180,7 @@ rm ~/finalPersonalWebsite/analytics.db && touch ~/finalPersonalWebsite/tmp/resta
 
 Trigger a fresh Vercel deploy without code changes:
 ```
-cd tools-hub && git commit --allow-empty -m "redeploy" && git push
+cd freeTools && git commit --allow-empty -m "redeploy" && git push
 ```
 
 ## Things to remember

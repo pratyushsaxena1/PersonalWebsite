@@ -62,7 +62,7 @@ def init_db() -> None:
         )
         conn.execute("CREATE INDEX IF NOT EXISTS idx_hits_ts ON hits(ts)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_hits_ip ON hits(ip_hash)")
-        # Separate table for the tools-hub subdomain (tools.pratyushsaxena.com).
+        # Separate table for the freeTools subdomain (tools.pratyushsaxena.com).
         # Keeps the main portfolio analytics clean and lets us count unique
         # visitors specifically for the tools site.
         conn.execute(
@@ -109,7 +109,7 @@ def record(request) -> None:
 
 
 def record_tool_hit(request, slug: str | None = None) -> None:
-    """Record a hit on the tools-hub subdomain. Called from the public CORS endpoint."""
+    """Record a hit on the freeTools subdomain. Called from the public CORS endpoint."""
     try:
         ua = (request.headers.get("User-Agent") or "")[:500]
         if BOT_RE.search(ua):
