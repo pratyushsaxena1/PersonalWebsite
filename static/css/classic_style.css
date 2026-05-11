@@ -49,11 +49,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .layout {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 max(40px, 5vw);
+    padding: 48px max(40px, 5vw);
     display: grid;
     grid-template-columns: minmax(340px, 5fr) minmax(0, 7fr);
     gap: 64px;
-    min-height: 100vh;
+    align-items: start;
 }
 
 /* ============================================================
@@ -61,14 +61,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    ============================================================ */
 .sidebar {
     position: sticky;
-    top: 0;
+    top: 48px;
     align-self: start;
-    height: 100vh;
-    padding: 48px 40px 48px 0;
+    padding: 0 40px 0 0;
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .brand-name {
