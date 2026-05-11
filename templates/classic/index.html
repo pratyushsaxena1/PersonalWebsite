@@ -7,6 +7,7 @@
     <meta name="description" content="{{ site.hook }}">
     <meta name="author" content="{{ site.name }}">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-classic.svg') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon-classic.svg') }}">
     <meta property="og:title" content="Classic - Pratyush Saxena">
     <meta property="og:description" content="{{ site.hook }}">
     <meta property="og:type" content="website">
@@ -15,11 +16,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/classic_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
 </head>
 <body>
+    <nav class="topnav classic-topnav" aria-label="Other sites">
+        <a href="{{ url_for('landing') }}">← home</a>
+        <a href="https://tools.pratyushsaxena.com">tools</a>
+        <a href="https://pro.pratyushsaxena.com">pro</a>
+        <a href="{{ url_for('terminal_index') }}">terminal</a>
+        <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
+    </nav>
+
     <div class="layout">
         <aside class="sidebar">
-            <h1 class="brand-name">Pratyush Saxena</h1>
+            <h1 class="brand-name">Pratyush Saxena <span class="brand-section">· Classic</span></h1>
             <p class="brand-role">CS + AI student at Cornell University</p>
 
             <nav class="side-nav" aria-label="Sections">
@@ -48,6 +58,9 @@
                 </header>
                 <p class="about-prose">
                     I'm a Cornell student pursuing a bachelor's degree in Computer Science with a minor in Artificial Intelligence. I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience in software engineering, AI research, and fintech. I'll be in San Jose this summer interning at Cisco (Splunk). I'm always excited to learn new things and meet people doing interesting work, so feel free to contact me and we can connect!
+                </p>
+                <p class="about-prose about-extra">
+                    On the side I build <a href="https://tools.pratyushsaxena.com" target="_blank" rel="noopener">free online tools</a> and <a href="https://pro.pratyushsaxena.com" target="_blank" rel="noopener">paid software</a> for small businesses.
                 </p>
             </section>
 
@@ -101,6 +114,8 @@
                 </article>
                 {% endfor %}
             </section>
+
+            {% with current_site='classic' %}{% include "_partials/site_footer.html" %}{% endwith %}
         </main>
     </div>
 

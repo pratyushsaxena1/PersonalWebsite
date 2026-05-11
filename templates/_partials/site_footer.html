@@ -1,0 +1,28 @@
+{# Universal cross-site footer.
+   Set `current_site` before include: 'landing' | 'classic' | 'terminal' | 'tools' | 'pro'. #}
+{% set current = current_site|default('') %}
+<footer class="site-footer">
+    <p class="site-footer-line">
+        © {{ now_year|default(2026) }} Pratyush Saxena
+    </p>
+    <p class="site-footer-line site-footer-sites">
+        <a href="{{ url_for('landing') }}"{% if current == 'landing' %} aria-current="page" class="is-here"{% endif %}>pratyushsaxena.com</a>
+        <span class="dot">·</span>
+        <a href="{{ url_for('classic') }}"{% if current == 'classic' %} aria-current="page" class="is-here"{% endif %}>classic</a>
+        <span class="dot">·</span>
+        <a href="{{ url_for('terminal_index') }}"{% if current == 'terminal' %} aria-current="page" class="is-here"{% endif %}>terminal</a>
+        <span class="dot">·</span>
+        <a href="https://tools.pratyushsaxena.com"{% if current == 'tools' %} aria-current="page" class="is-here"{% endif %}>tools</a>
+        <span class="dot">·</span>
+        <a href="https://pro.pratyushsaxena.com"{% if current == 'pro' %} aria-current="page" class="is-here"{% endif %}>pro</a>
+    </p>
+    <p class="site-footer-line site-footer-meta">
+        <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
+        <span class="dot">·</span>
+        <a href="mailto:{{ site.email }}">email</a>
+        <span class="dot">·</span>
+        <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
+        <span class="dot">·</span>
+        <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a>
+    </p>
+</footer>

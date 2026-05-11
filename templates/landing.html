@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratyush Saxena - Cornell</title>
+    <title>Pratyush Saxena</title>
     <meta name="description" content="{{ site.hook }}">
     <meta name="author" content="{{ site.name }}">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon-landing.svg') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon-landing.svg') }}">
     <meta property="og:title" content="Pratyush Saxena">
     <meta property="og:description" content="{{ site.hook }}">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#02e35c">
+    <meta name="theme-color" content="#0a0a0a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
 </head>
 <body>
+    <nav class="topnav" aria-label="Other sites">
+        <a href="https://tools.pratyushsaxena.com">tools</a>
+        <a href="https://pro.pratyushsaxena.com">pro</a>
+        <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
+    </nav>
+
     <header class="landing-header">
         <h1 class="landing-name-big">Pratyush Saxena</h1>
         <p class="landing-sub">cs + ai student at cornell. pick a view to look around.</p>
@@ -83,13 +91,12 @@
         <span class="tools-strip-cta">tools.pratyushsaxena.com <span class="arrow">→</span></span>
     </a>
 
-    <footer class="landing-footer">
-        <p>or jump straight to
-            <a href="mailto:{{ site.email }}">email</a> ·
-            <a href="{{ site.github }}" target="_blank" rel="noopener">github</a> ·
-            <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a> ·
-            <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
-        </p>
-    </footer>
+    <a class="tools-strip pro-strip" href="https://pro.pratyushsaxena.com" target="_blank" rel="noopener">
+        <span class="tools-strip-label">// and</span>
+        <span class="tools-strip-text">i sell focused software to small businesses</span>
+        <span class="tools-strip-cta">pro.pratyushsaxena.com <span class="arrow">→</span></span>
+    </a>
+
+    {% with current_site='landing' %}{% include "_partials/site_footer.html" %}{% endwith %}
 </body>
 </html>

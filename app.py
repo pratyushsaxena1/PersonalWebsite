@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from flask import Flask, render_template, redirect, url_for, request, abort, jsonify
 
 import analytics
@@ -147,7 +148,7 @@ PROJECTS = [
 
 @app.context_processor
 def inject_site():
-    return {"site": SITE}
+    return {"site": SITE, "now_year": datetime.utcnow().year}
 
 
 # ----- landing -----

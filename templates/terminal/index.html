@@ -7,6 +7,7 @@
     <meta name="description" content="{{ site.hook }}">
     <meta name="author" content="{{ site.name }}">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon.svg') }}">
     <meta property="og:title" content="Terminal - Pratyush Saxena">
     <meta property="og:description" content="{{ site.hook }}">
     <meta property="og:type" content="website">
@@ -14,6 +15,7 @@
     <meta name="theme-color" content="#02e35c">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/general_style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
     <script>
         window.SITE = {
             hook: {{ site.hook | tojson }},
@@ -50,7 +52,7 @@
             <p class="input-row" id="inputRow"><span class="prefix"><span class="user">amazingvisitor</span><span class="at">@</span><span class="host">pratyushsaxenawebsite</span> <span class="path" id="promptPath">~</span> <span class="sigil">%</span>&nbsp;</span><input type="text" id="userInput" autocomplete="off" spellcheck="false" autofocus onkeydown="handleKeyDown(event)"></p>
 
             <footer>
-                <span>© <span id="year"></span> Pratyush Saxena · <a href="{{ url_for('landing') }}">home</a> · <a href="{{ url_for('classic') }}">classic website view</a></span>
+                <span>© <span id="year"></span> Pratyush Saxena · <a href="{{ url_for('landing') }}">home</a> · <a href="{{ url_for('classic') }}">classic</a> · <a href="https://tools.pratyushsaxena.com">tools</a> · <a href="https://pro.pratyushsaxena.com">pro</a></span>
                 <span class="footer-links">
                     <a href="mailto:{{ site.email }}">{{ site.email }}</a>
                     <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
