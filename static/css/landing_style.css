@@ -425,8 +425,7 @@ body {
 @media (max-width: 720px) {
     body { padding: 4vh 4vw; }
 
-    .landing-name    { font-size: 0.78rem; }
-    .landing-tagline { font-size: 1.5rem; }
+    .landing-sub { font-size: 1rem; }
 
     .chooser {
         grid-template-columns: 1fr;

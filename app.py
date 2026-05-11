@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort, jsonify
+from flask import Flask, render_template, redirect, url_for, request, abort, jsonify
 
 import analytics
 
@@ -104,7 +104,6 @@ PROJECTS = [
             "users, sessions, and authentication securely."
         ),
         "tags": ["HTML", "CSS", "JavaScript", "SQL", "phpMyAdmin"],
-        # TODO(pratyush): drop a real GitHub/demo URL in here when ready
         "links": [],
     },
     {

@@ -63,13 +63,7 @@
                         <h3 class="role-title">
                             <span class="role-co">{{ job.company }}</span><span class="role-arrow">→</span><span class="role-position">{{ job.role }}</span>
                         </h3>
-                        {% if job.highlights %}
-                        <ul class="role-points">
-                            {% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}
-                        </ul>
-                        {% else %}
                         <p class="role-desc">{{ job.description }}</p>
-                        {% endif %}
                         {% if job.tags %}
                         <ul class="tags">
                             {% for tag in job.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
@@ -98,12 +92,10 @@
                             {% for tag in proj.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
                         </ul>
                         {% endif %}
-                    </div>
-                    <div class="project-links">
                         {% if proj.links %}
+                        <p class="project-links">
                             {% for link in proj.links %}<a href="{{ link.href }}" target="_blank" rel="noopener">{{ link.label }} ↗</a>{% endfor %}
-                        {% else %}
-                            <span class="empty">-</span>
+                        </p>
                         {% endif %}
                     </div>
                 </article>
