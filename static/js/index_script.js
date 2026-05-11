@@ -215,10 +215,6 @@
             "  cd <folder>    enter a folder    (e.g. cd projects)",
             "  <link name>    open a link       (e.g. github)",
             "",
-            "Also see:",
-            "  tools          my free online tools (tools.pratyushsaxena.com)",
-            "  pro            paid software for small businesses (pro.pratyushsaxena.com)",
-            "",
             "Type `help` for the full command list, or `tree` for a map of everything.",
         ]};
 
