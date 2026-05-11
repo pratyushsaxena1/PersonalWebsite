@@ -19,12 +19,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
 </head>
 <body>
-    <nav class="topnav" aria-label="Other sites">
-        <a href="https://tools.pratyushsaxena.com">tools</a>
-        <a href="https://pro.pratyushsaxena.com">pro</a>
-        <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
-    </nav>
-
     <header class="landing-header">
         <h1 class="landing-name-big">Pratyush Saxena</h1>
         <p class="landing-sub">cs + ai student at cornell. pick a view to look around.</p>
@@ -97,6 +91,6 @@
         <span class="tools-strip-cta">pro.pratyushsaxena.com <span class="arrow">→</span></span>
     </a>
 
-    {% include "_partials/site_footer.html" %}
+    {% with current_site='landing' %}{% include "_partials/site_footer.html" %}{% endwith %}
 </body>
 </html>
