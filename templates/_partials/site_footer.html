@@ -1,21 +1,11 @@
-{# Universal cross-site footer.
-   Set `current_site` before include: 'landing' | 'classic' | 'terminal' | 'tools' | 'pro'.
-   Hub + classic are recruiter-facing, so they get the full personal row
-   (resume · linkedin · email · github). #}
+{# Universal site footer.
+   Hub shows © + personal (recruiter audience finds resume/linkedin here).
+   Classic shows just © — the sidebar already exposes resume/email/etc. #}
 {% set current = current_site|default('') %}
-<footer class="site-footer">
+{% set show_meta = current == 'landing' %}
+<footer class="site-footer{% if show_meta %} site-footer--has-meta{% endif %}">
     <p class="site-footer-copy">© {{ now_year|default(2026) }} Pratyush Saxena</p>
-    <p class="site-footer-sites">
-        <a href="{{ url_for('landing') }}"{% if current == 'landing' %} aria-current="page" class="is-here"{% endif %}>home</a>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href="{{ url_for('classic') }}"{% if current == 'classic' %} aria-current="page" class="is-here"{% endif %}>classic</a>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href="{{ url_for('terminal_index') }}"{% if current == 'terminal' %} aria-current="page" class="is-here"{% endif %}>terminal</a>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href="https://tools.pratyushsaxena.com"{% if current == 'tools' %} aria-current="page" class="is-here"{% endif %}>tools</a>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href="https://pro.pratyushsaxena.com"{% if current == 'pro' %} aria-current="page" class="is-here"{% endif %}>pro</a>
-    </p>
+    {% if show_meta %}
     <p class="site-footer-meta">
         <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
         <span class="dot" aria-hidden="true">·</span>
@@ -25,4 +15,5 @@
         <span class="dot" aria-hidden="true">·</span>
         <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
     </p>
+    {% endif %}
 </footer>
