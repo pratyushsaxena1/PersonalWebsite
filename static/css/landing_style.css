@@ -317,67 +317,117 @@ body {
 .classic-mini-bar.short   { background: linear-gradient(90deg, #3d3a35 0 65%, transparent 65%); }
 .classic-mini-bar.shorter { background: linear-gradient(90deg, #3d3a35 0 45%, transparent 45%); }
 
-/* ---------- tools strip ---------- */
-.tools-strip {
-    display: flex;
-    align-items: center;
-    gap: 1.2em;
+/* ---------- elsewhere section ---------- */
+.elsewhere {
     width: 100%;
     max-width: 1500px;
-    margin-top: 1em;
-    padding: 0.7em 1.3em;
+    margin-top: 2.4em;
+    animation: fadeUp 0.7s 0.25s both ease-out;
+}
+
+.elsewhere-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.1em;
+    margin: 0 0 1.1em;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.elsewhere-divider span {
+    color: #ffaf5a;
+    white-space: nowrap;
+}
+
+.elsewhere-divider::before,
+.elsewhere-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+}
+
+.elsewhere-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4em;
+}
+
+.elsewhere-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55em;
+    padding: 1.3em 1.5em;
     background: var(--window-bg);
     border: 1px solid var(--rule);
     border-radius: 12px;
     color: inherit;
     text-decoration: none;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    animation: fadeUp 0.7s 0.25s both ease-out;
 }
 
-.tools-strip:hover {
+.elsewhere-card:hover {
     transform: translateY(-2px);
     border-color: rgba(255, 175, 90, 0.5);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-.tools-strip-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+.elsewhere-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+}
+
+.elsewhere-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: rgba(255, 175, 90, 0.08);
     color: #ffaf5a;
     flex-shrink: 0;
 }
 
-.tools-strip-text {
-    flex: 1;
-    color: var(--text-dim);
-    font-size: 0.95rem;
+.elsewhere-card-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 0;
 }
 
-.tools-strip-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
+.elsewhere-card-desc {
     font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text);
-    flex-shrink: 0;
+    line-height: 1.55;
+    color: var(--text-dim);
+    margin: 0;
+}
+
+.elsewhere-card-url {
+    margin-top: 0.2em;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    letter-spacing: 0.01em;
     transition: color 0.2s ease;
 }
 
-.tools-strip:hover .tools-strip-cta {
-    color: #ffaf5a;
+.elsewhere-card:hover .elsewhere-card-url {
+    color: var(--text);
 }
 
-.tools-strip .arrow {
+.elsewhere-card .arrow {
     display: inline-block;
     transition: transform 0.2s ease;
 }
 
-.tools-strip:hover .arrow {
-    transform: translateX(4px);
+.elsewhere-card:hover .arrow {
+    transform: translateX(3px);
 }
 
 /* ---------- footer ---------- */
@@ -436,10 +486,16 @@ body {
     .choice-preview { height: 140px; }
     .choice-body    { padding: 1.2em; }
 
-    .tools-strip {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5em;
-        padding: 1em 1.2em;
+    .elsewhere {
+        margin-top: 1.8em;
+    }
+
+    .elsewhere-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9em;
+    }
+
+    .elsewhere-card {
+        padding: 1.1em 1.2em;
     }
 }

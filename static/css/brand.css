@@ -82,10 +82,3 @@
     text-decoration-color: var(--sun);
 }
 
-/* ---------- landing: parallel pro tools-strip ---------- */
-.tools-strip.pro-strip {
-    margin-top: 0.85em;
-}
-.tools-strip.pro-strip .tools-strip-label {
-    color: var(--sun);
-}

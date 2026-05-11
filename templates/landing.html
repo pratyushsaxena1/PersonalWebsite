@@ -79,17 +79,35 @@
         </a>
     </main>
 
-    <a class="tools-strip" href="https://tools.pratyushsaxena.com" target="_blank" rel="noopener">
-        <span class="tools-strip-label">// also</span>
-        <span class="tools-strip-text">i build small, free online tools</span>
-        <span class="tools-strip-cta">tools.pratyushsaxena.com <span class="arrow">→</span></span>
-    </a>
+    <section class="elsewhere">
+        <div class="elsewhere-divider" aria-hidden="true">
+            <span>// elsewhere</span>
+        </div>
 
-    <a class="tools-strip pro-strip" href="https://pro.pratyushsaxena.com" target="_blank" rel="noopener">
-        <span class="tools-strip-label">// and</span>
-        <span class="tools-strip-text">i sell focused software to small businesses</span>
-        <span class="tools-strip-cta">pro.pratyushsaxena.com <span class="arrow">→</span></span>
-    </a>
+        <div class="elsewhere-grid">
+            <a class="elsewhere-card tools" href="https://tools.pratyushsaxena.com" target="_blank" rel="noopener">
+                <div class="elsewhere-card-head">
+                    <span class="elsewhere-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </span>
+                    <h3 class="elsewhere-card-title">tools</h3>
+                </div>
+                <p class="elsewhere-card-desc">small, free online tools i build.</p>
+                <span class="elsewhere-card-url">tools.pratyushsaxena.com <span class="arrow">→</span></span>
+            </a>
+
+            <a class="elsewhere-card pro" href="https://pro.pratyushsaxena.com" target="_blank" rel="noopener">
+                <div class="elsewhere-card-head">
+                    <span class="elsewhere-card-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </span>
+                    <h3 class="elsewhere-card-title">pro</h3>
+                </div>
+                <p class="elsewhere-card-desc">focused software i sell to small businesses.</p>
+                <span class="elsewhere-card-url">pro.pratyushsaxena.com <span class="arrow">→</span></span>
+            </a>
+        </div>
+    </section>
 
     {% with current_site='landing' %}{% include "_partials/site_footer.html" %}{% endwith %}
 </body>
