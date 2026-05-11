@@ -14,19 +14,18 @@
 
 /* ---------- universal site footer ---------- */
 .site-footer {
-    margin: 4em auto 2em;
-    padding: 1.8em 1.5em 0;
-    max-width: 70em;
+    margin: 4em 0 2em;
+    padding: 1.8em 0 0;
     border-top: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.55em;
+    justify-content: space-between;
+    gap: 0.6em 2em;
     font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
     font-size: 0.85rem;
     color: var(--muted);
     line-height: 1.6;
-    text-align: center;
 }
 .site-footer p {
     margin: 0;
@@ -48,7 +47,6 @@
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
 }
 .site-footer .is-here {
     color: var(--ink);
@@ -58,11 +56,20 @@
     text-underline-offset: 4px;
 }
 
-/* On dark page backgrounds (landing, terminal pages) the ink-on-dark
-   current marker would be invisible. Bump it to the page's text color. */
-body.landing .site-footer .is-here,
-body > .site-footer .is-here {
+/* On dark page backgrounds (landing) the ink-on-dark current marker would
+   be invisible. Bump it to the page text color. */
+body > .site-footer .is-here,
+.landing-footer .is-here {
     color: #ececee;
+}
+
+@media (max-width: 720px) {
+    .site-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5em;
+    }
 }
 
 /* ---------- classic about-extra line ---------- */

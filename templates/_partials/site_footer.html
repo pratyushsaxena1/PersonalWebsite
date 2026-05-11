@@ -1,5 +1,7 @@
 {# Universal cross-site footer.
-   Set `current_site` before include: 'landing' | 'classic' | 'terminal' | 'tools' | 'pro'. #}
+   Set `current_site` before include: 'landing' | 'classic' | 'terminal' | 'tools' | 'pro'.
+   Hub + classic are recruiter-facing, so they get the full personal row
+   (resume · linkedin · email · github). #}
 {% set current = current_site|default('') %}
 <footer class="site-footer">
     <p class="site-footer-copy">© {{ now_year|default(2026) }} Pratyush Saxena</p>
@@ -17,10 +19,10 @@
     <p class="site-footer-meta">
         <a href="{{ url_for('resume_file') }}" target="_blank" rel="noopener">resume</a>
         <span class="dot" aria-hidden="true">·</span>
+        <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a>
+        <span class="dot" aria-hidden="true">·</span>
         <a href="mailto:{{ site.email }}">email</a>
         <span class="dot" aria-hidden="true">·</span>
         <a href="{{ site.github }}" target="_blank" rel="noopener">github</a>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin</a>
     </p>
 </footer>
