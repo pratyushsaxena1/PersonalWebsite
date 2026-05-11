@@ -14,8 +14,11 @@
 
 /* ---------- universal site footer ---------- */
 .site-footer {
-    margin: 1.8em 0 0.6em;
-    padding: 1.1em 0 0;
+    max-width: 1500px;
+    margin: 1.4em auto 0.6em;
+    padding: 1.1em max(24px, 4vw) 0;
+    box-sizing: border-box;
+    width: 100%;
     border-top: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
     display: flex;
     flex-wrap: wrap;
