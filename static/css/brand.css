@@ -18,7 +18,8 @@
     top: 1.1rem;
     right: 1.4rem;
     display: flex;
-    gap: 1.1em;
+    align-items: center;
+    gap: 0.45em;
     font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
     font-size: 0.86rem;
     z-index: 50;
@@ -28,16 +29,24 @@
     text-decoration: none;
     transition: color 0.15s ease;
 }
+.topnav a + a::before {
+    content: "·";
+    margin-right: 0.45em;
+    color: color-mix(in srgb, var(--muted) 40%, transparent);
+}
 .topnav a:hover {
     color: var(--sun);
 }
 
-/* Classic has a paper background, so muted needs a slight bump. */
+/* Classic has a paper background — muted needs a slight bump for contrast */
 .classic-topnav a {
     color: #8a8276;
 }
 .classic-topnav a:hover {
     color: var(--sun);
+}
+.classic-topnav .sep {
+    color: #cfc8b6;
 }
 
 @media (max-width: 640px) {
@@ -46,68 +55,65 @@
         justify-content: center;
         padding: 0.75em 1em 0.25em;
         font-size: 0.82rem;
-        gap: 0.85em;
+        gap: 0.7em;
     }
 }
 
-/* ---------- universal site footer ---------- */
+/* ---------- universal site footer (identity + contact only) ---------- */
 .site-footer {
     margin: 4em auto 2em;
-    padding: 1.4em 1.5em;
+    padding: 1.4em 1.5em 0;
     max-width: 70em;
-    border-top: 1px solid var(--rule, #e6e1d2);
+    border-top: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6em 1.4em;
     font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
     font-size: 0.84rem;
     color: var(--muted);
-    text-align: left;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 .site-footer p {
     margin: 0;
 }
 .site-footer a {
-    color: var(--muted);
+    color: inherit;
     text-decoration: none;
     transition: color 0.15s ease;
 }
 .site-footer a:hover {
     color: var(--sun);
 }
-.site-footer .dot {
-    color: color-mix(in srgb, var(--muted) 60%, transparent);
-    margin: 0 0.15em;
-}
-.site-footer .is-here {
-    color: inherit;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-.site-footer-sites,
 .site-footer-meta {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    gap: 0.05em 0;
     align-items: center;
+    gap: 0 0.55em;
+}
+.site-footer-meta .dot {
+    color: color-mix(in srgb, var(--muted) 45%, transparent);
 }
 
-/* Classic uses paper-on-cream — make footer foreground match its ink */
-.classic_style + .site-footer,
-.layout .site-footer {
-    color: #6b6b6b;
-}
-
-/* Landing/terminal are dark — make sure footer reads on the dark page bg */
-.landing-footer,
-body > .site-footer:not(.layout .site-footer) {
-    color: var(--muted);
+@media (max-width: 640px) {
+    .site-footer {
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 /* ---------- classic sidebar: wordmark sub-section ---------- */
 .brand-section {
-    font-weight: 400;
+    display: inline-block;
+    font-size: 0.4em;
+    font-weight: 500;
     color: var(--muted);
-    margin-left: 0.1em;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+    margin-left: 0.6em;
+    white-space: nowrap;
+    transform: translateY(-0.15em);
 }
 
 /* ---------- classic about-extra line ---------- */
