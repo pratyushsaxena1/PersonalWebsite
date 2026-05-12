@@ -15,73 +15,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}">
 </head>
 <body>
     <header class="landing-header">
+        <p class="landing-eyebrow"><span class="slash">//</span> hello, i'm</p>
         <h1 class="landing-name-big">Pratyush Saxena</h1>
-        <p class="landing-sub">cs + ai student at cornell. pick a view to look around.</p>
     </header>
+
+    <div class="section-divider section-divider--choose" aria-hidden="true">
+        <span><span class="slash">//</span> pick a view</span>
+    </div>
 
     <main class="chooser">
         <a class="choice classic" href="{{ url_for('classic') }}">
-            <div class="choice-preview" aria-hidden="true">
-                <div class="classic-mini">
-                    <div class="classic-mini-side">
-                        <p class="classic-mini-name">Pratyush Saxena</p>
-                        <p class="classic-mini-role">CS + AI · Cornell</p>
-                        <div class="classic-mini-nav">
-                            <span class="active">About</span>
-                            <span>Experience</span>
-                            <span>Projects</span>
-                        </div>
-                    </div>
-                    <div class="classic-mini-main">
-                        <p class="classic-mini-label">EXPERIENCE</p>
-                        <div class="classic-mini-bar"></div>
-                        <div class="classic-mini-bar short"></div>
-                        <div class="classic-mini-bar"></div>
-                        <div class="classic-mini-bar shorter"></div>
-                    </div>
-                </div>
-            </div>
             <div class="choice-body">
-                <p class="choice-label">// professional</p>
+                <div class="choice-head">
+                    <span class="choice-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </span>
+                    <p class="choice-label"><span class="slash">//</span> professional</p>
+                </div>
                 <h2 class="choice-title">classic website</h2>
-                <p class="choice-desc">a normal webpage with my experiences, projects, and contact information. easy to browse through.</p>
+                <p class="choice-desc">a normal webpage with my experience, projects, and contact info.</p>
                 <span class="choice-cta">enter classic website <span class="arrow">→</span></span>
             </div>
         </a>
         <a class="choice terminal" href="{{ url_for('terminal_index') }}">
-            <div class="choice-preview" aria-hidden="true">
-                <div class="term-mini-bar">
-                    <span class="td td-r"></span>
-                    <span class="td td-y"></span>
-                    <span class="td td-g"></span>
-                </div>
-                <div class="term-mini-body">
-                    <div class="preview-line"><span class="dim-preview">Last login: Wed May 6 14:49 on ttys003</span></div>
-                    <div class="preview-line"><span class="dim-preview">~ %</span> cat README.md</div>
-                    <div class="preview-line preview-output">Welcome to my terminal portfolio.</div>
-                    <div class="preview-line preview-output">I'm Pratyush, a CS + AI student at Cornell.</div>
-                    <div class="preview-line"><span class="dim-preview">~ %</span> ls</div>
-                    <div class="preview-line preview-ls"><span class="file-preview">README.md</span>  <span class="dir-preview">about/</span>  <span class="dir-preview">experience/</span>  <span class="dir-preview">links/</span>  <span class="dir-preview">projects/</span>  <span class="file-preview">resume.pdf</span></div>
-                    <div class="preview-line"><span class="dim-preview">~ %</span> <span class="preview-cursor"></span></div>
-                </div>
-            </div>
             <div class="choice-body">
-                <p class="choice-label">// fun</p>
+                <div class="choice-head">
+                    <span class="choice-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    </span>
+                    <p class="choice-label"><span class="slash">//</span> fun</p>
+                </div>
                 <h2 class="choice-title">terminal</h2>
-                <p class="choice-desc">an interactive shell. previous experience with a terminal is useful, but not necessary.</p>
+                <p class="choice-desc">an interactive shell. terminal experience is useful but not required.</p>
                 <span class="choice-cta">enter terminal <span class="arrow">→</span></span>
             </div>
         </a>
     </main>
 
     <section class="elsewhere">
-        <div class="elsewhere-divider" aria-hidden="true">
-            <span>// elsewhere</span>
+        <div class="section-divider section-divider--elsewhere" aria-hidden="true">
+            <span><span class="slash">//</span> elsewhere</span>
         </div>
 
         <div class="elsewhere-grid">

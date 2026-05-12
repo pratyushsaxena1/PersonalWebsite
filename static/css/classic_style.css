@@ -3,16 +3,16 @@
    ============================================================ */
 
 :root {
-    --bg: #faf8f3;
-    --bg-elev: #ffffff;
-    --bg-subtle: #f1ede3;
-    --ink: #161514;
-    --ink-soft: #3d3a35;
-    --ink-mute: #807a6f;
-    --ink-faint: #b3ada1;
-    --border: #e6e1d2;
-    --border-strong: #cfc8b6;
-    --accent: #d4a017;
+    --bg: #0d0b08;
+    --bg-elev: #16120d;
+    --bg-subtle: #1b1814;
+    --ink: #fbf7ee;
+    --ink-soft: #e5dcc9;
+    --ink-mute: #a89e88;
+    --ink-faint: #6d685c;
+    --border: #2a2520;
+    --border-strong: #3d3833;
+    --accent: #e6b734;
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
@@ -210,18 +210,18 @@ section:first-child {
 
 .section-title {
     font-family: var(--font-mono);
-    font-size: 11.5px;
-    font-weight: 500;
-    color: var(--ink-mute);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     margin: 0;
 }
 
 .section-meta {
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--ink-faint);
+    font-size: 13px;
+    color: var(--ink-soft);
     text-transform: lowercase;
     letter-spacing: 0.02em;
 }
@@ -268,8 +268,8 @@ section:first-child {
 .role-when,
 .project-num {
     font-family: var(--font-mono);
-    font-size: 11.5px;
-    color: var(--ink-mute);
+    font-size: 12.5px;
+    color: var(--ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     padding-top: 4px;
@@ -340,10 +340,10 @@ section:first-child {
 
 .tag {
     font-family: var(--font-mono);
-    font-size: 10.5px;
-    color: var(--ink-mute);
+    font-size: 11.5px;
+    color: var(--ink-soft);
     background: var(--bg-subtle);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-strong);
     padding: 3px 8px;
     border-radius: 4px;
     line-height: 1.5;
@@ -360,11 +360,11 @@ section:first-child {
     flex-wrap: wrap;
     gap: 14px;
     font-family: var(--font-mono);
-    font-size: 11.5px;
+    font-size: 12.5px;
 }
 
 .project-links a {
-    color: var(--ink-mute);
+    color: var(--ink-soft);
     transition: color 0.15s ease;
 }
 
