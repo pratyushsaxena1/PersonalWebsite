@@ -15,8 +15,8 @@ analytics.db
 *.db
 
 # Nested projects (each has its own git repo and Vercel deployment)
-freeTools/
-paidTools/
+tools/
+pro/
 
 # Other
 small_business_email_scraper.py

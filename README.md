@@ -1,21 +1,30 @@
-# personal website
+# personal-website
 
-this is my personal website (pratyushsaxena.com). notes for me on how to push updates live.
+My personal site at pratyushsaxena.com. Hub, classic portfolio, and terminal portfolio in one Flask app.
 
-## deploy
+## Stack
 
-1. push to github:
-   ```
-   git push origin main
-   ```
+Flask, vanilla JS, SQLite for self-hosted analytics.
 
-2. SSH into GoDaddy:
-   - godaddy.com → My Products → Web Hosting → Manage → cPanel Admin
-   - cPanel → Advanced → Terminal
+## Local development
 
-3. pull and restart:
-   ```
-   cd ~/finalPersonalWebsite
-   git pull origin main
-   touch tmp/restart.txt
-   ```
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+Open http://localhost:5001.
+
+## Deploy
+
+```bash
+git push origin main
+```
+
+Then SSH into the host (GoDaddy cPanel → Terminal), pull, and restart:
+
+```bash
+cd ~/finalPersonalWebsite
+git pull origin main
+touch tmp/restart.txt
+```

@@ -12,7 +12,6 @@ analytics.init_db()
 def _log_hit():
     analytics.record(request)
 
-RESUME_FILENAME = "Pratyush Saxena Resume.pdf"
 
 SITE = {
     "name": "Pratyush Saxena",
@@ -232,7 +231,6 @@ TOOLS_ORIGIN = "https://tools.pratyushsaxena.com"
 
 def _tools_cors(resp):
     origin = request.headers.get("Origin", "")
-    # Allow the production tools subdomain plus localhost for dev.
     if origin == TOOLS_ORIGIN or origin.startswith("http://localhost:"):
         resp.headers["Access-Control-Allow-Origin"] = origin
         resp.headers["Vary"] = "Origin"
