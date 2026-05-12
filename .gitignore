@@ -17,3 +17,7 @@ analytics.db
 # Nested projects (each has its own git repo and Vercel deployment)
 freeTools/
 paidTools/
+
+# Other
+small_business_email_scraper.py
+leads.csv
