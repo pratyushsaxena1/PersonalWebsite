@@ -30,12 +30,29 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     min-height: 100vh;
-    padding: 5vh 5vw;
+    padding: 2.4vh 5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.landing-main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.8em;
+}
+
+.landing-pick {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 ::selection {
@@ -46,18 +63,18 @@ body {
 /* ---------- header ---------- */
 .landing-header {
     text-align: center;
-    margin-bottom: 5vh;
+    margin-bottom: 0;
     animation: fadeUp 0.5s 0.05s both ease-out;
 }
 
 .landing-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-dim);
-    margin: 0 0 1em;
+    margin: 0 0 0.7em;
 }
 
 .slash {
@@ -65,7 +82,7 @@ body {
 }
 
 .landing-name-big {
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.025em;
@@ -77,9 +94,9 @@ body {
 .chooser {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5em;
+    gap: 1.1em;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     animation: fadeUp 0.6s 0.15s both ease-out;
 }
 
@@ -107,29 +124,29 @@ body {
 .choice.terminal:hover { border-color: rgba(2, 227, 92, 0.55); }
 
 .choice-body {
-    padding: 2.4em 2.2em 2.2em;
+    padding: 1.4em 1.6em 1.4em;
 }
 
 .choice-head {
     display: flex;
     align-items: center;
-    gap: 0.65em;
-    margin: 0 0 1.1em;
+    gap: 0.55em;
+    margin: 0 0 0.7em;
 }
 
 .choice-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
     flex-shrink: 0;
 }
 
 .choice-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
 .choice.classic  .choice-icon { background: rgba(92, 204, 255, 0.1); color: var(--accent); }
@@ -137,7 +154,7 @@ body {
 
 .choice-label {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -148,26 +165,26 @@ body {
 .choice.terminal .choice-label { color: var(--green); }
 
 .choice-title {
-    font-size: 1.95rem;
+    font-size: 1.35rem;
     font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--text);
-    margin: 0 0 0.5em;
-    line-height: 1.1;
+    margin: 0 0 0.35em;
+    line-height: 1.15;
 }
 
 .choice-desc {
-    font-size: 1.08rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
     color: var(--text-dim);
-    margin: 0 0 1.3em;
+    margin: 0 0 0.85em;
 }
 
 .choice-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5em;
-    font-size: 1.05rem;
+    gap: 0.4em;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--text);
 }
@@ -183,11 +200,31 @@ body {
     transform: translateX(4px);
 }
 
+/* ---------- about section ---------- */
+.landing-about {
+    width: 100%;
+    max-width: 1280px;
+    margin-bottom: 0;
+    animation: fadeUp 0.6s 0.12s both ease-out;
+}
+
+.section-divider--about {
+    margin-bottom: 1em;
+}
+.section-divider--about span { color: var(--text-dim); }
+
+.landing-about-body p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+}
+
 /* ---------- elsewhere section ---------- */
 .elsewhere {
     width: 100%;
-    max-width: 1200px;
-    margin-top: 2.4em;
+    max-width: 1280px;
+    margin-top: 0;
     animation: fadeUp 0.7s 0.25s both ease-out;
 }
 
@@ -195,12 +232,12 @@ body {
     display: flex;
     align-items: center;
     gap: 1.1em;
-    margin: 0 0 1.1em;
+    margin: 0 0 0.9em;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     color: var(--text-dim);
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 }
@@ -219,29 +256,29 @@ body {
 
 .section-divider--choose {
     margin-top: 0;
-    margin-bottom: 1.1em;
+    margin-bottom: 0.85em;
 }
 .section-divider--choose span { color: var(--text-dim); }
 
 .section-divider--elsewhere {
-    margin-bottom: 0.9em;
+    margin-bottom: 0.7em;
 }
 .section-divider--elsewhere span { color: var(--text-dim); }
 
 .elsewhere-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.4em;
+    gap: 1em;
 }
 
 .elsewhere-card {
     display: flex;
     flex-direction: column;
-    gap: 0.45em;
-    padding: 1.3em 1.5em 1.2em;
+    gap: 0.35em;
+    padding: 0.9em 1.1em 0.95em;
     background: transparent;
     border: 1px solid var(--rule);
-    border-radius: 10px;
+    border-radius: 9px;
     color: inherit;
     text-decoration: none;
     transition: border-color 0.2s ease, background 0.2s ease;
@@ -276,7 +313,7 @@ body {
 }
 
 .elsewhere-card-title {
-    font-size: 1.1rem;
+    font-size: 1.02rem;
     font-weight: 500;
     letter-spacing: -0.005em;
     color: var(--text);
@@ -284,16 +321,16 @@ body {
 }
 
 .elsewhere-card-desc {
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 0.86rem;
+    line-height: 1.5;
     color: var(--text-dim);
     margin: 0;
 }
 
 .elsewhere-card-url {
-    margin-top: 0.15em;
+    margin-top: 0.1em;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.74rem;
     color: var(--text-dim);
     letter-spacing: 0.01em;
     transition: color 0.2s ease;
@@ -320,28 +357,31 @@ body {
 
 /* ---------- mobile ---------- */
 @media (max-width: 720px) {
-    body { padding: 5vh 4vw 4vh; }
+    body { padding: 3vh 4vw 3vh; }
 
-    .landing-header { margin-bottom: 2.2vh; }
-    .landing-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; }
+    .landing-header { margin-bottom: 1.6vh; }
+    .landing-eyebrow { font-size: 0.66rem; letter-spacing: 0.2em; }
 
     .chooser {
         grid-template-columns: 1fr;
-        gap: 1em;
+        gap: 0.8em;
     }
 
-    .choice-body { padding: 1.8em 1.5em 1.6em; }
+    .choice-body { padding: 1.2em 1.3em 1.2em; }
 
     .elsewhere {
-        margin-top: 1.8em;
+        margin-top: 1.2em;
     }
 
     .elsewhere-grid {
         grid-template-columns: 1fr;
-        gap: 0.9em;
+        gap: 0.7em;
     }
 
     .elsewhere-card {
-        padding: 1.1em 1.2em;
+        padding: 0.85em 1em;
     }
+
+    .landing-about { margin-bottom: 1.4em; }
+    .landing-about-body p { font-size: 0.9rem; line-height: 1.6; }
 }

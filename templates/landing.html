@@ -19,11 +19,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}">
 </head>
 <body>
+    <div class="landing-main">
     <header class="landing-header">
         <p class="landing-eyebrow"><span class="slash">//</span> hello, i'm</p>
         <h1 class="landing-name-big">Pratyush Saxena</h1>
     </header>
 
+    <section class="landing-about">
+        <div class="section-divider section-divider--about" aria-hidden="true">
+            <span><span class="slash">//</span> about me</span>
+        </div>
+        <div class="landing-about-body">
+            <p>
+                cs + ai undergrad at cornell, originally from northern virginia.
+                past internships were at nasa, biostate ai, and alpheva ai, and
+                this summer i'm at splunk (cisco) as a security and automation intern. 
+                outside of coding, i play guitar, go on late-night drives with music blasting, 
+                hang out with friends, and play with my dog Waffle.
+                the email link in the footer goes straight to me
+                if you're working on something interesting and want to reach out.
+            </p>
+        </div>
+    </section>
+
+    <section class="landing-pick">
     <div class="section-divider section-divider--choose" aria-hidden="true">
         <span><span class="slash">//</span> pick a view</span>
     </div>
@@ -56,6 +75,7 @@
             </div>
         </a>
     </main>
+    </section>
 
     <section class="elsewhere">
         <div class="section-divider section-divider--elsewhere" aria-hidden="true">
@@ -86,6 +106,7 @@
             </a>
         </div>
     </section>
+    </div>
 
     {% with current_site='landing' %}{% include "_partials/site_footer.html" %}{% endwith %}
 </body>
