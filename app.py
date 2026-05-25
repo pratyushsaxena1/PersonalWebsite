@@ -1,3 +1,4 @@
+import hmac
 import os
 from datetime import datetime
 from flask import Flask, render_template, redirect, url_for, request, abort, jsonify
@@ -11,6 +12,35 @@ analytics.init_db()
 @app.before_request
 def _log_hit():
     analytics.record(request)
+
+
+# Content-Security-Policy: the site only loads Google Fonts externally and has a
+# few inline <script>/<style> blocks, so inline is allowed but external scripts
+# are not. frame-ancestors blocks clickjacking.
+_CSP = (
+    "default-src 'self'; "
+    "script-src 'self' 'unsafe-inline'; "
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+    "font-src 'self' https://fonts.gstatic.com; "
+    "img-src 'self' data:; "
+    "connect-src 'self'; "
+    "base-uri 'self'; "
+    "form-action 'self'; "
+    "frame-ancestors 'none'"
+)
+
+
+@app.after_request
+def _security_headers(resp):
+    resp.headers.setdefault("X-Content-Type-Options", "nosniff")
+    resp.headers.setdefault("X-Frame-Options", "DENY")
+    resp.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    resp.headers.setdefault("Permissions-Policy", "geolocation=(), microphone=(), camera=()")
+    resp.headers.setdefault(
+        "Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload"
+    )
+    resp.headers.setdefault("Content-Security-Policy", _CSP)
+    return resp
 
 
 SITE = {
@@ -231,7 +261,9 @@ TOOLS_ORIGIN = "https://tools.pratyushsaxena.com"
 
 def _tools_cors(resp):
     origin = request.headers.get("Origin", "")
-    if origin == TOOLS_ORIGIN or origin.startswith("http://localhost:"):
+    # localhost is only a valid cross-origin caller during local development.
+    allow_localhost = app.debug and origin.startswith("http://localhost:")
+    if origin == TOOLS_ORIGIN or allow_localhost:
         resp.headers["Access-Control-Allow-Origin"] = origin
         resp.headers["Vary"] = "Origin"
         resp.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
@@ -266,9 +298,15 @@ def tool_visits_count():
 @app.route('/admin/report')
 def admin_report():
     expected = os.environ.get('ADMIN_TOKEN')
-    if not expected or request.args.get('token') != expected:
+    # Prefer the X-Admin-Token header (never lands in access logs); fall back to
+    # the query param for browser convenience. Constant-time comparison.
+    provided = request.headers.get('X-Admin-Token') or request.args.get('token', '')
+    if not expected or not hmac.compare_digest(provided, expected):
         abort(404)
-    days = int(request.args.get('days', 7))
+    try:
+        days = int(request.args.get('days', 7))
+    except (TypeError, ValueError):
+        days = 7
     days = max(1, min(days, 3650))
     report = analytics.build_report(days=days)
     if request.args.get('format') == 'json':
@@ -280,6 +318,9 @@ def admin_report():
 
 
 if __name__ == '__main__':
-    debug = os.environ.get('FLASK_DEBUG', '1') == '1'
+    # Debug is OFF unless explicitly enabled for local dev (FLASK_DEBUG=1).
+    # In production the app is served by gunicorn (see Procfile), which never
+    # runs this block, so the Werkzeug debugger is never exposed.
+    debug = os.environ.get('FLASK_DEBUG', '0') == '1'
     port = int(os.environ.get('PORT', 5001))
     app.run(host='0.0.0.0', port=port, debug=debug)

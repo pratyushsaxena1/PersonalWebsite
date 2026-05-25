@@ -18,6 +18,8 @@ analytics.db
 tools/
 pro/
 
-# Other
+# Scraped contact data — never commit (PII)
 small_business_email_scraper.py
 leads.csv
+backup.csv
+*.csv
