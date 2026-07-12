@@ -35,7 +35,7 @@
 
 .menu-key { color: var(--accent); }
 
-/* `ls` entries — colored by type, mac `ls --color` style.
+/* `ls` entries - colored by type, mac `ls --color` style.
    dirs also get a trailing `/` from JS (ls -F flavor) for extra clarity. */
 .ls-dir  { color: var(--path); }
 .ls-link { color: var(--accent); }

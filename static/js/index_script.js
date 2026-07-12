@@ -171,7 +171,7 @@
         b: '#1e88e5',
         w: '#ffffff',
     };
-    const PIXEL_SIZE = 12; // px per pixel — bumps the figure to a comfortable size
+    const PIXEL_SIZE = 12; // px per pixel - bumps the figure to a comfortable size
 
     function buildPixelArt(rows, palette, size) {
         const wrap = document.createElement('div');

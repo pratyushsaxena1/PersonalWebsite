@@ -1,6 +1,6 @@
 {# Universal site footer.
    Hub shows © + personal (recruiter audience finds resume/linkedin here).
-   Classic shows just © — the sidebar already exposes resume/email/etc. #}
+   Classic shows just © - the sidebar already exposes resume/email/etc. #}
 {% set current = current_site|default('') %}
 {% set show_meta = current == 'landing' %}
 <footer class="site-footer{% if show_meta %} site-footer--has-meta{% endif %}">

@@ -110,7 +110,7 @@ EXPERIENCE = [
     {
         "company": "Alpheva AI",
         "role": "Product Analytics & Engineering Intern",
-        "dates": "2025 – 2026",
+        "dates": "2025 - 2026",
         "description": (
             "I worked on both the product and analytics side of a "
             "fintech app. I built a React Native Reports dashboard with cash-flow "
@@ -157,7 +157,7 @@ EXPERIENCE = [
     {
         "company": "TJHSST Computer Systems Lab",
         "role": "Student Systems Administrator",
-        "dates": "2022 – 2023",
+        "dates": "2022 - 2023",
         "description": (
             "I was selected as one of eight students to help maintain my school's IT "
             "infrastructure, including dozens of workstations, servers, and internal "
@@ -217,7 +217,7 @@ PROJECTS = [
         "description": (
             "I helped prototype a floor tile that harvests electricity from foot "
             "traffic and ambient sound using piezoelectric crystals, reaching "
-            "roughly 1.4 mW per step per dollar — over 30x more cost-efficient than "
+            "roughly 1.4 mW per step per dollar - over 30x more cost-efficient than "
             "competing drum-harvester designs. I also built an AI resonance-tuning "
             "system that predicts ambient vibration and sound frequencies and "
             "adjusts pressure on the crystal through a motorized brace to keep the "

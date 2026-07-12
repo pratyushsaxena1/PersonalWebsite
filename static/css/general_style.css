@@ -213,7 +213,7 @@ body {
     margin-top: 0.2em;
 }
 
-/* prompt coloring — same rules apply to the echo line (.input-line)
+/* prompt coloring - same rules apply to the echo line (.input-line)
    AND the live input row (.input-row), so colors don't shift on Enter */
 .prompt .user,    .input-line .user,    .input-row .user    { color: var(--user); }
 .prompt .at,      .input-line .at,      .input-row .at      { color: var(--text-dim); }
