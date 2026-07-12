@@ -223,7 +223,7 @@
         aboutDir.entries['bio.txt'] = { type: 'file', content: [
             "I'm a Cornell student pursuing a bachelor's degree in Computer Science with a minor in Artificial Intelligence.",
             "",
-            "I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience across software engineering, AI research, and fintech. This summer I'll be in San Jose interning at Cisco (Splunk).",
+            "I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience across software engineering, AI research, and fintech. Right now I'm in San Jose interning at Cisco (Splunk) on security and automation engineering.",
             "",
             "Outside of CS: late-night drives, music (any genre), guitar, my dog Waffle, and basketball.",
             "",
@@ -233,7 +233,7 @@
             "What I'm up to right now:",
             "",
             "  - Studying CS + AI at Cornell",
-            "  - Heading to San Jose this summer to intern at Cisco (Splunk)",
+            "  - In San Jose interning at Cisco (Splunk) on security & automation",
             "  - Shipping side projects in computer vision and ML",
             "  - Picking up guitar again, slowly",
             "  - Member of Cornell's Generative AI Club and ACSU",
@@ -241,7 +241,7 @@
         aboutDir.entries['stack.txt'] = { type: 'file', content: [
             "Things I've worked with:",
             "",
-            "Languages    Python, Java, JavaScript, SQL, HTML/CSS",
+            "Languages    Python, Java, Go, JavaScript, SQL, HTML/CSS",
             "Frameworks   Flask, React, React Native",
             "ML / CV      OpenCV, NumPy, CNNs",
             "Other        phpMyAdmin, Onshape, ArcGIS, Excel, Git",

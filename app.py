@@ -93,24 +93,24 @@ SITE = {
 
 EXPERIENCE = [
     {
-        "company": "NASA",
-        "role": "Software Engineer Intern",
-        "dates": "Summer 2024",
+        "company": "Splunk (Cisco)",
+        "role": "Software Security & Automation Engineering Intern",
+        "dates": "Summer 2026",
         "description": (
-            "I worked on Python software for a laser-based wireless power transfer "
-            "proof-of-concept between satellites in orbit. I led a small team and "
-            "focused mainly on two things: building a computer vision algorithm in "
-            "OpenCV to track a laser point in real time, and writing IMU-based "
-            "software to help stabilize the satellite's orientation. At the end of "
-            "the internship, I presented our results, including ~98% laser-aiming "
-            "accuracy, to over 100 NASA engineers and scientists."
+            "I'm interning on the security and automation engineering side of "
+            "Splunk. I built an MCP tool that normalizes freeze and scheduling data "
+            "so agents can figure out maintenance time blocks across more than "
+            "15,000 stacks, and I cut query latency by about 100ms on Splunk's "
+            "source of truth by replacing an HTTP cache with direct Redis access in "
+            "Go. I also rolled out cybersecurity and code-style standards across "
+            "15+ repositories to improve the quality of AI-generated code."
         ),
-        "tags": ["Python", "OpenCV", "Computer Vision", "IMU", "Robotics"],
+        "tags": ["Go", "Redis", "MCP", "Security", "Automation"],
     },
     {
         "company": "Alpheva AI",
         "role": "Product Analytics & Engineering Intern",
-        "dates": "2024 – 2025",
+        "dates": "2025 – 2026",
         "description": (
             "I worked on both the product and analytics side of a "
             "fintech app. I built a React Native Reports dashboard with cash-flow "
@@ -127,7 +127,7 @@ EXPERIENCE = [
     {
         "company": "Biostate AI",
         "role": "AI Research Intern",
-        "dates": "2024",
+        "dates": "Fall 2025",
         "description": (
             "I worked in a human-in-the-loop machine learning research workflow, "
             "where I reviewed AI-generated analyses, validated statistical results, "
@@ -138,6 +138,21 @@ EXPERIENCE = [
             "journals, including Genome Biology."
         ),
         "tags": ["CNN", "LLMs", "Bioinformatics", "Research", "Python"],
+    },
+    {
+        "company": "NASA",
+        "role": "Software Engineer Intern",
+        "dates": "Summer 2024",
+        "description": (
+            "I worked on Python software for a laser-based wireless power transfer "
+            "proof-of-concept between satellites in orbit. I led a small team and "
+            "focused mainly on two things: building a computer vision algorithm in "
+            "OpenCV to track a laser point in real time, and writing IMU-based "
+            "software to help stabilize the satellite's orientation. At the end of "
+            "the internship, I presented our results, including ~98% laser-aiming "
+            "accuracy, to over 100 NASA engineers and scientists."
+        ),
+        "tags": ["Python", "OpenCV", "Computer Vision", "IMU", "Robotics"],
     },
     {
         "company": "TJHSST Computer Systems Lab",
@@ -156,25 +171,42 @@ EXPERIENCE = [
 
 PROJECTS = [
     {
-        "name": "wE-Study",
-        "subtitle": "Collaborative Online Study Platform",
+        "name": "Baya",
+        "subtitle": "AI-Powered Interior Design Platform",
         "description": (
-            "I designed and built a full-stack web platform that helps students "
-            "organize and coordinate study sessions. I used HTML, CSS, JavaScript, "
-            "and SQL, and set up a relational database with phpMyAdmin to manage "
-            "users, sessions, and authentication securely."
+            "I built an AI interior design platform that combines Claude with four "
+            "fal.ai image models to turn a single photo of a room into "
+            "photorealistic redesigns, chaining up to seven sequential edits while "
+            "preserving the room's architecture and linking to real products you "
+            "can buy. Under the hood I added cross-provider fallback (Claude "
+            "Sonnet ↔ Haiku and fal.ai ↔ Replicate), distributed concurrency "
+            "control with Upstash, and a pgvector product-matching system seeded "
+            "from the eBay and Amazon APIs."
         ),
-        "tags": ["HTML", "CSS", "JavaScript", "SQL", "phpMyAdmin"],
+        "tags": ["Claude", "fal.ai", "pgvector", "Upstash", "AI"],
+        "links": [],
+    },
+    {
+        "name": "Drizzle",
+        "subtitle": "Autoimmune Disorder Social Network",
+        "description": (
+            "I built a full-stack, cross-platform social media app for people "
+            "living with autoimmune disorders using React Native and Next.js. It "
+            "includes Supabase Auth with OAuth, real-time messaging, fine-grained "
+            "privacy controls, push notifications, infinite-scrolling feeds, and "
+            "Cloudflare R2 image uploads with cloud-backed synchronization."
+        ),
+        "tags": ["React Native", "Next.js", "Supabase", "Cloudflare R2"],
         "links": [],
     },
     {
         "name": "4Sight",
         "subtitle": "Insider Trading Monitor",
         "description": (
-            "I built a Python-based tool that scrapes SEC Form 4 insider trading "
-            "filings using the EDGAR API. On top of that, I added an NLP model that "
-            "analyzes insider trades alongside recent news to generate possible "
-            "explanations for trading behavior."
+            "I built a Python-based tool that scrapes and parses SEC Form 4 insider "
+            "trading filings using the EDGAR API, tested across 50+ tickers. On top "
+            "of that, I added an NLP model that analyzes insider trades alongside "
+            "global news to generate possible explanations for trading behavior."
         ),
         "tags": ["Python", "NLP", "EDGAR API", "Web Scraping", "Finance"],
         "links": [],
@@ -183,10 +215,13 @@ PROJECTS = [
         "name": "T-REX",
         "subtitle": "Tunable-Resonance Electricity eXperiment",
         "description": (
-            "I helped prototype a floor tile that generates electricity from "
-            "mechanical and sound energy using piezoelectric materials. I also built "
-            "an AI model that predicts environmental conditions and adjusts applied "
-            "pressure on the tile to improve energy output."
+            "I helped prototype a floor tile that harvests electricity from foot "
+            "traffic and ambient sound using piezoelectric crystals, reaching "
+            "roughly 1.4 mW per step per dollar — over 30x more cost-efficient than "
+            "competing drum-harvester designs. I also built an AI resonance-tuning "
+            "system that predicts ambient vibration and sound frequencies and "
+            "adjusts pressure on the crystal through a motorized brace to keep the "
+            "tile near peak resonance for maximum output."
         ),
         "tags": ["Hardware", "Piezoelectrics", "AI", "Energy"],
         "links": [],
@@ -202,6 +237,18 @@ PROJECTS = [
             "over 150 people."
         ),
         "tags": ["Python", "CNN", "Computer Vision", "Healthcare"],
+        "links": [],
+    },
+    {
+        "name": "wE-Study",
+        "subtitle": "Collaborative Online Study Platform",
+        "description": (
+            "I designed and built a full-stack web platform that helps students "
+            "organize and coordinate study sessions. I used HTML, CSS, JavaScript, "
+            "and SQL, and set up a relational database with phpMyAdmin to manage "
+            "users, sessions, and authentication securely."
+        ),
+        "tags": ["HTML", "CSS", "JavaScript", "SQL", "phpMyAdmin"],
         "links": [],
     },
 ]
