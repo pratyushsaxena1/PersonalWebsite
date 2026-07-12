@@ -1,12 +1,43 @@
 import hmac
 import os
+import threading
+import time
 from datetime import datetime
 from flask import Flask, render_template, redirect, url_for, request, abort, jsonify
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 import analytics
 
 app = Flask(__name__)
+
+# Trust exactly one proxy hop (the platform load balancer) for X-Forwarded-For /
+# -Proto / -Host. Without this, request.remote_addr is the proxy and the raw
+# header is client-spoofable; with it, remote_addr is the real client IP that
+# the trusted proxy appended, which the rate limiter and analytics rely on.
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+
 analytics.init_db()
+
+
+# Lightweight in-process rate limiter (no external store). Per-worker under
+# gunicorn, so it's a best-effort flood brake rather than a hard global cap;
+# enough to stop a single client from hammering the public analytics-write
+# endpoint and bloating the SQLite DB. Strong limits would need a shared store
+# or a WAF rule at the platform edge.
+_rl_lock = threading.Lock()
+_rl_hits: dict[str, list[float]] = {}
+
+
+def _rate_limited(key: str, limit: int, window_s: float) -> bool:
+    now = time.time()
+    with _rl_lock:
+        bucket = [t for t in _rl_hits.get(key, []) if now - t < window_s]
+        bucket.append(now)
+        _rl_hits[key] = bucket
+        if len(_rl_hits) > 10000:  # bound memory under IP-spray
+            for k in [k for k, v in _rl_hits.items() if not v or now - v[-1] > window_s]:
+                _rl_hits.pop(k, None)
+        return len(bucket) > limit
 
 
 @app.before_request
@@ -276,6 +307,9 @@ def _tools_cors(resp):
 def tool_visits_track():
     if request.method == 'OPTIONS':
         return _tools_cors(app.make_response(('', 204)))
+    # Cap how fast any one client can write analytics rows.
+    if _rate_limited(f"track:{request.remote_addr or 'unknown'}", 30, 60.0):
+        return _tools_cors(app.make_response((jsonify({'error': 'rate limited'}), 429)))
     slug = None
     try:
         data = request.get_json(silent=True) or {}

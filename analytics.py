@@ -90,8 +90,9 @@ def record(request) -> None:
         ua = (request.headers.get("User-Agent") or "")[:500]
         if BOT_RE.search(ua):
             return
-        fwd = request.headers.get("X-Forwarded-For", "")
-        ip = fwd.split(",")[0].strip() if fwd else (request.remote_addr or "")
+        # request.remote_addr is the trusted client IP (set by ProxyFix from the
+        # proxy-appended X-Forwarded-For), not the spoofable leftmost header value.
+        ip = request.remote_addr or ""
         with _connect() as conn:
             conn.execute(
                 "INSERT INTO hits(ts, path, referrer, ua, ip_hash) VALUES(?,?,?,?,?)",
@@ -114,8 +115,9 @@ def record_tool_hit(request, slug: str | None = None) -> None:
         ua = (request.headers.get("User-Agent") or "")[:500]
         if BOT_RE.search(ua):
             return
-        fwd = request.headers.get("X-Forwarded-For", "")
-        ip = fwd.split(",")[0].strip() if fwd else (request.remote_addr or "")
+        # request.remote_addr is the trusted client IP (set by ProxyFix from the
+        # proxy-appended X-Forwarded-For), not the spoofable leftmost header value.
+        ip = request.remote_addr or ""
         with _connect() as conn:
             conn.execute(
                 "INSERT INTO tool_hits(ts, slug, referrer, ua, ip_hash) VALUES(?,?,?,?,?)",
