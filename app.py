@@ -240,6 +240,22 @@ PROJECTS = [
         "links": [],
     },
     {
+        "name": "Marrow",
+        "subtitle": "Scroll-to-Learn iOS App",
+        "description": (
+            "I built an offline iOS app that turns learning into a "
+            "vertical-scrolling feed of educational cards spanning computer "
+            "science, finance, math, and science. Using Expo, TypeScript, and "
+            "NativeWind, I wove an SM-2 spaced-repetition scheduler invisibly "
+            "into the scroll so you recall ideas you saw weeks ago, with all "
+            "progress persisted on-device in SQLite. The app runs entirely "
+            "offline with no backend, accounts, or network calls, shipping a "
+            "hand-reviewed corpus in the app bundle."
+        ),
+        "tags": ["React Native", "Expo", "TypeScript", "SQLite", "iOS"],
+        "links": [],
+    },
+    {
         "name": "wE-Study",
         "subtitle": "Collaborative Online Study Platform",
         "description": (
