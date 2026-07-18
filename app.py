@@ -184,7 +184,7 @@ PROJECTS = [
             "from the eBay and Amazon APIs."
         ),
         "tags": ["Claude", "fal.ai", "pgvector", "Upstash", "AI"],
-        "links": [],
+        "links": [{"label": "live site", "href": "https://bayacollections.com/"}],
     },
     {
         "name": "Drizzle",
@@ -197,7 +197,7 @@ PROJECTS = [
             "Cloudflare R2 image uploads with cloud-backed synchronization."
         ),
         "tags": ["React Native", "Next.js", "Supabase", "Cloudflare R2"],
-        "links": [],
+        "links": [{"label": "live site", "href": "https://www.joindrizzle.com/welcome"}],
     },
     {
         "name": "4Sight",
@@ -209,7 +209,7 @@ PROJECTS = [
             "global news to generate possible explanations for trading behavior."
         ),
         "tags": ["Python", "NLP", "EDGAR API", "Web Scraping", "Finance"],
-        "links": [],
+        "links": [{"label": "live demo", "href": "https://4-sight-mu.vercel.app/"}],
     },
     {
         "name": "T-REX",
@@ -224,7 +224,7 @@ PROJECTS = [
             "tile near peak resonance for maximum output."
         ),
         "tags": ["Hardware", "Piezoelectrics", "AI", "Energy"],
-        "links": [],
+        "links": [{"label": "CAD model", "href": "https://cad.onshape.com/documents/fd8ac6e3e5df3313a0ddd5a9/w/895eaee745abf19deca5ee34/e/9d8877913008a508a817565b?renderMode=0&uiState=6a53a814f4e375455e4e581e"}],
     },
     {
         "name": "SkIntel",
@@ -237,7 +237,7 @@ PROJECTS = [
             "over 150 people."
         ),
         "tags": ["Python", "CNN", "Computer Vision", "Healthcare"],
-        "links": [],
+        "links": [{"label": "live demo", "href": "https://skintel-o20f.onrender.com/"}],
     },
     {
         "name": "Marrow",
@@ -265,7 +265,7 @@ PROJECTS = [
             "users, sessions, and authentication securely."
         ),
         "tags": ["HTML", "CSS", "JavaScript", "SQL", "phpMyAdmin"],
-        "links": [],
+        "links": [{"label": "live site", "href": "https://we-study.free.je/"}],
     },
 ]
 

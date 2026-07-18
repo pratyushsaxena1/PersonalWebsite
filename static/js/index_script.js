@@ -273,15 +273,19 @@
         // ~/projects/<slug>.md
         const projectsDir = { type: 'dir', entries: {} };
         for (const p of projs) {
+            const content = [
+                '# ' + p.name + (p.subtitle ? ' - ' + p.subtitle : ''),
+                '',
+                p.description,
+                '',
+                'tags: ' + (p.tags || []).join(', '),
+            ];
+            if (p.links && p.links.length) {
+                content.push('link: ' + p.links.map(l => l.href).join('  '));
+            }
             projectsDir.entries[slugify(p.name) + '.md'] = {
                 type: 'file',
-                content: [
-                    '# ' + p.name + (p.subtitle ? ' - ' + p.subtitle : ''),
-                    '',
-                    p.description,
-                    '',
-                    'tags: ' + (p.tags || []).join(', '),
-                ],
+                content,
             };
         }
         root.entries['projects'] = projectsDir;
@@ -433,6 +437,28 @@
         }[c]));
     }
 
+    // Render a text line into `p`, turning any http(s) URLs into clickable
+    // anchors. Non-URL text is added as safe text nodes (no innerHTML).
+    function appendLinkified(p, line) {
+        const re = /(https?:\/\/[^\s]+)/g;
+        let last = 0, m;
+        while ((m = re.exec(line)) !== null) {
+            if (m.index > last) {
+                p.appendChild(document.createTextNode(line.slice(last, m.index)));
+            }
+            const a = document.createElement('a');
+            a.href = m[0];
+            a.textContent = m[0];
+            a.target = '_blank';
+            a.rel = 'noopener';
+            p.appendChild(a);
+            last = m.index + m[0].length;
+        }
+        if (last < line.length) {
+            p.appendChild(document.createTextNode(line.slice(last)));
+        }
+    }
+
     function appendBlock(rawCmd, lines, opts) {
         const out = $('terminalOutput');
         if (!out) return;
@@ -450,7 +476,7 @@
                 const p = document.createElement('p');
                 p.className = 'computer-text';
                 if (opts && opts.preserveSpaces) p.style.whiteSpace = 'pre';
-                p.textContent = line;
+                appendLinkified(p, line);
                 wrap.appendChild(p);
             }
         }
