@@ -197,7 +197,7 @@ PROJECTS = [
             "Cloudflare R2 image uploads with cloud-backed synchronization."
         ),
         "tags": ["React Native", "Next.js", "Supabase", "Cloudflare R2"],
-        "links": [{"label": "live site", "href": "https://www.joindrizzle.com/welcome"}],
+        "links": [{"label": "app page", "href": "https://www.joindrizzle.com/welcome"}],
     },
     {
         "name": "4Sight",
