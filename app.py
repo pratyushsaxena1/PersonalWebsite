@@ -253,7 +253,7 @@ PROJECTS = [
             "hand-reviewed corpus in the app bundle."
         ),
         "tags": ["React Native", "Expo", "TypeScript", "SQLite", "iOS"],
-        "links": [],
+        "links": [{"label": "app page", "href": "https://pratyushsaxena1.github.io/marrow/"}],
     },
     {
         "name": "wE-Study",
