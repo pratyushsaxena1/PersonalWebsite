@@ -208,7 +208,7 @@
 
         // ~/README.md - the entry point at root
         root.entries['README.md'] = { type: 'file', content: [
-            "Welcome to my terminal portfolio. I'm Pratyush, a CS + AI student at Cornell. I'm interning at Cisco (Splunk) this summer; previously, I've interned at NASA, Biostate AI, and Alpheva AI.",
+            "Welcome to my terminal portfolio. I'm Pratyush, a CS + AI student at Cornell. I interned at Cisco (Splunk) this past summer; before that, at NASA, Biostate AI, and Alpheva AI.",
             "",
             "How to navigate this website:",
             "  cat <file>     read a file       (e.g. cat about/bio.txt)",
@@ -223,7 +223,7 @@
         aboutDir.entries['bio.txt'] = { type: 'file', content: [
             "I'm a Cornell student pursuing a bachelor's degree in Computer Science with a minor in Artificial Intelligence.",
             "",
-            "I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience across software engineering, AI research, and fintech. Right now I'm in San Jose interning at Cisco (Splunk) on security and automation engineering.",
+            "I've interned at NASA, Biostate AI, and Alpheva AI, gaining experience across software engineering, AI research, and fintech. This past summer I was in San Jose interning at Cisco (Splunk) on security and automation engineering.",
             "",
             "Outside of CS: late-night drives, music (any genre), guitar, my dog Waffle, and basketball.",
             "",
@@ -233,7 +233,7 @@
             "What I'm up to right now:",
             "",
             "  - Studying CS + AI at Cornell",
-            "  - In San Jose interning at Cisco (Splunk) on security & automation",
+            "  - Back in Ithaca after a summer at Cisco (Splunk) on security & automation",
             "  - Shipping side projects in computer vision and ML",
             "  - Picking up guitar again, slowly",
             "  - Member of Cornell's Generative AI Club and ACSU",

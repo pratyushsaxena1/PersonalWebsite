@@ -83,7 +83,7 @@ SITE = {
     "github": "https://github.com/pratyushsaxena1",
     "linkedin": "https://www.linkedin.com/in/pratyush-saxena-735b81215/",
     "spotify": "https://open.spotify.com/user/31yu4lbmsbl5w3xdfawtcbnfrdfu?si=dd5f9a94a9d84721",
-    "hook": "CS + AI student at Cornell. Interning at Cisco (Splunk) Summer 2026. Previously at NASA, Biostate AI, and Alpheva AI.",
+    "hook": "CS + AI student at Cornell. Most recently a security and automation intern at Cisco (Splunk). Previously at NASA, Biostate AI, and Alpheva AI.",
     "about": (
         "I'm an undergraduate at Cornell studying computer science and artificial "
         "intelligence. Besides coding, my interests include late-night drives, music "
@@ -97,7 +97,7 @@ EXPERIENCE = [
         "role": "Software Security & Automation Engineering Intern",
         "dates": "Summer 2026",
         "description": (
-            "I'm interning on the security and automation engineering side of "
+            "I interned on the security and automation engineering side of "
             "Splunk. I built an MCP tool that normalizes freeze and scheduling data "
             "so agents can figure out maintenance time blocks across more than "
             "15,000 stacks, and I cut query latency by about 100ms on Splunk's "
